@@ -1,5 +1,9 @@
 # FASTER Web Report Parser
 
+[![npm (scoped)](https://img.shields.io/npm/v/%40cityssm/faster-report-parser)](https://www.npmjs.com/package/@cityssm/faster-report-parser)
+[![DeepSource](https://app.deepsource.com/gh/cityssm/node-faster-report-parser.svg/?label=active+issues&show_trend=true&token=rD0jxkWVmFU_1JBnPdo6HdKI)](https://app.deepsource.com/gh/cityssm/node-faster-report-parser/)
+[![Maintainability](https://api.codeclimate.com/v1/badges/6e4f094e9e2473b3463b/maintainability)](https://codeclimate.com/github/cityssm/node-faster-report-parser/maintainability)
+
 Unofficial tools to help with integrations with the
 [FASTER Web](https://fasterasset.com/products/fleet-management-software/)
 fleet management system.
