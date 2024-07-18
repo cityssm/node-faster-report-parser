@@ -10,8 +10,10 @@
     ".": "./index.js",
     "./index": "./index.js",
     "./index.js": "./index.js",
+    "./csv": "./csvReports.js",
     "./csvReports": "./csvReports.js",
     "./csvReports.js": "./csvReports.js",
+    "./xlsx": "./xlsxReports.js",
     "./xlsxReports": "./xlsxReports.js",
     "./xlsxReports.js": "./xlsxReports.js"
   },
@@ -24,7 +26,9 @@
   "keywords": [
     "asset-management",
     "faster-web",
-    "fleet-management"
+    "fleet-management",
+    "csv-parser",
+    "xlsx-parser"
   ],
   "repository": {
     "type": "git",
