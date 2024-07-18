@@ -1,11 +1,11 @@
 {
   "name": "@cityssm/faster-report-parser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "engines": {
     "node": ">=18.0.0"
   },
-  "description": "",
+  "description": "Parses select Excel and CSV reports from FASTER Web into usable data objects.",
   "exports": {
     ".": "./index.js",
     "./index": "./index.js",
