@@ -5,7 +5,7 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "description": "Parses select Excel and CSV reports from FASTER Web into usable data objects.",
+  "description": "Parses select Excel and CSV reports from the FASTER Web Fleet Management System into usable data objects.",
   "exports": {
     ".": "./index.js",
     "./index": "./index.js",
