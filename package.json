@@ -24,8 +24,9 @@
     "coverage": "c8 --reporter=lcov --reporter=text --reporter=text-summary node --test"
   },
   "keywords": [
-    "asset-management",
     "faster-web",
+    "fmis",
+    "asset-management",
     "fleet-management",
     "csv-parser",
     "xlsx-parser"
