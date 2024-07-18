@@ -16,7 +16,7 @@ import { w600 } from './csvReports/setup/w600.js';
 export async function parseFasterCsvReport(pathToCsvFile, parsingOptions) {
     // eslint-disable-next-line security/detect-non-literal-fs-filename
     const fileStream = fs.createReadStream(pathToCsvFile);
-    return await new Promise((resolve, reject) => {
+    return await new Promise((resolve) => {
         const results = {
             data: [],
             parameters: {},

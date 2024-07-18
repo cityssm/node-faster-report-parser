@@ -29,7 +29,7 @@ export async function parseFasterCsvReport<T>(
   const fileStream = fs.createReadStream(pathToCsvFile)
 
   return await new Promise<FasterCsvReportResults<T>>(
-    (resolve, reject) => {
+    (resolve) => {
       const results: FasterCsvReportResults<T> = {
         data: [],
         parameters: {},
