@@ -3,10 +3,10 @@
 import fs from 'node:fs';
 import stringToNumeric from '@cityssm/string-to-numeric';
 import Papa from 'papaparse';
-import { w200s } from './reports/csv/inventory/w200s.js';
-import { w223 } from './reports/csv/inventory/w223.js';
-import { w235 } from './reports/csv/inventory/w235.js';
-import { w600 } from './reports/csv/setup/w600.js';
+import { w200s } from './csvReports/inventory/w200s.js';
+import { w223 } from './csvReports/inventory/w223.js';
+import { w235 } from './csvReports/inventory/w235.js';
+import { w600 } from './csvReports/setup/w600.js';
 /**
  * Parses CSV files of Standard FASTER reports.
  * @param pathToCsvFile - Path to a FASTER CSV file.

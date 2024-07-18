@@ -9,11 +9,11 @@ import Papa from 'papaparse'
 import type {
   FasterCsvReportResults,
   ParseFasterCsvReportOptions,
-} from './reports/csv/csvTypes.js'
-import { w200s } from './reports/csv/inventory/w200s.js'
-import { w223 } from './reports/csv/inventory/w223.js'
-import { w235 } from './reports/csv/inventory/w235.js'
-import { w600 } from './reports/csv/setup/w600.js'
+} from './csvReports/csvTypes.js'
+import { w200s } from './csvReports/inventory/w200s.js'
+import { w223 } from './csvReports/inventory/w223.js'
+import { w235 } from './csvReports/inventory/w235.js'
+import { w600 } from './csvReports/setup/w600.js'
 
 /**
  * Parses CSV files of Standard FASTER reports.
@@ -131,7 +131,7 @@ export type SupportedFasterCsvReportName =
   | keyof typeof fasterCsvReportOptions
   | Capitalize<keyof typeof fasterCsvReportOptions>
 
-export type { W200SReportRow } from './reports/csv/inventory/w200s.js'
-export type { W223ReportRow } from './reports/csv/inventory/w223.js'
-export type { W235ReportRow } from './reports/csv/inventory/w235.js'
-export type { W600ReportRow } from './reports/csv/setup/w600.js'
+export type { W200SReportRow } from './csvReports/inventory/w200s.js'
+export type { W223ReportRow } from './csvReports/inventory/w223.js'
+export type { W235ReportRow } from './csvReports/inventory/w235.js'
+export type { W600ReportRow } from './csvReports/setup/w600.js'
