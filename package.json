@@ -1,0 +1,53 @@
+{
+  "name": "@cityssm/faster-report-parser",
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "description": "",
+  "exports": {
+    ".": "./index.js",
+    "./index": "./index.js",
+    "./index.js": "./index.js",
+    "./csvReports": "./csvReports.js",
+    "./csvReports.js": "./csvReports.js",
+    "./xlsxReports": "./xlsxReports.js",
+    "./xlsxReports.js": "./xlsxReports.js"
+  },
+  "scripts": {
+    "test": "node --test",
+    "test:csv": "node --test --test-name-pattern=\"node-faster-report-parser/csv\"",
+    "test:xlsx": "cross-env NODE_ENV=dev DEBUG=faster-api:* node --test --test-name-pattern=\"node-faster-report-parser/xlsx\"",
+    "coverage": "c8 --reporter=lcov --reporter=text --reporter=text-summary node --test"
+  },
+  "keywords": [
+    "asset-management",
+    "faster-web",
+    "fleet-management"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cityssm/node-faster-report-parser.git"
+  },
+  "author": "The Corporation of the City of Sault Ste. Marie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cityssm/node-faster-report-parser/issues"
+  },
+  "homepage": "https://github.com/cityssm/node-faster-report-parser#readme",
+  "devDependencies": {
+    "@types/debug": "^4.1.12",
+    "@types/node": "^20.14.11",
+    "@types/papaparse": "^5.3.14",
+    "eslint-config-cityssm": "^5.0.0",
+    "prettier-config-cityssm": "^1.0.0"
+  },
+  "dependencies": {
+    "@cityssm/string-to-numeric": "^0.2.0",
+    "@cityssm/utils-datetime": "^1.3.0",
+    "debug": "^4.3.5",
+    "papaparse": "^5.4.1",
+    "xlsx": "https://github.com/cityssm/node-dependencies/raw/main/xlsx/xlsx-0.20.2.tgz"
+  }
+}
