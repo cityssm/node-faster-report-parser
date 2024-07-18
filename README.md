@@ -4,13 +4,13 @@
 [![DeepSource](https://app.deepsource.com/gh/cityssm/node-faster-report-parser.svg/?label=active+issues&show_trend=true&token=rD0jxkWVmFU_1JBnPdo6HdKI)](https://app.deepsource.com/gh/cityssm/node-faster-report-parser/)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6e4f094e9e2473b3463b/maintainability)](https://codeclimate.com/github/cityssm/node-faster-report-parser/maintainability)
 
-Unofficial tools to help with integrations with the
-[FASTER Web](https://fasterasset.com/products/fleet-management-software/)
-fleet management system.
+**Parses select Excel and CSV reports from the
+[FASTER Web](https://fasterasset.com/products/fleet-management-software/) Fleet Management System
+into usable data objects.**
 
 It includes support for two main FASTER Web report types.
 
-- **Parsers for select "Standard" CSV reports**,
+- **Select "Standard" CSV reports**,
   mostly associated with inventory.
   Includes:
 
@@ -19,7 +19,7 @@ It includes support for two main FASTER Web report types.
   - W235 - Inventory Snapshot
   - W600 - Pick List Values Report
 
-- **Parsers for select "Standard" XLSX reports**,
+- **Select "Standard" XLSX reports**,
   mostly associated with inventory.
   Includes:
 
