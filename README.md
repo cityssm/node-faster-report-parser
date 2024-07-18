@@ -37,6 +37,17 @@ No parsers can be written for them!
 npm install @cityssm/faster-report-parser
 ```
 
+## Usage
+
+```javascript
+import { parseW223ExcelReport } from '@cityssm/faster-report-parser/xlsx'
+
+const parsedReport = parseW223ExcelReport('C:/path/to/report.xlsx')
+
+console.log(parsedReport.data[0].storeroomDescription)
+// => "MAIN STOREROOM"
+```
+
 ## More Code for FASTER Web
 
 [Userscripts for FASTER Web](https://cityssm.github.io/userscripts/#userscripts-for-faster-web)<br />
