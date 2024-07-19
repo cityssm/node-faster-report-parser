@@ -23,4 +23,9 @@ export interface W217ExcelReportResults extends FasterExcelReportResults {
     reportName: typeof w217ReportName;
     data: W217DocumentReportData[];
 }
+/**
+ * Parses the XLSX version of the "W217 - Direct Charge Transactions" report.
+ * @param pathToXlsxFile - Path to the report.
+ * @returns - The parsed results.
+ */
 export declare function parseW217ExcelReport(pathToXlsxFile: string): W217ExcelReportResults;

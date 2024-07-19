@@ -65,6 +65,11 @@ function isDataRow(row: XlsxDataRow): boolean {
   )
 }
 
+/**
+ * Parses the XLSX version of the "W217 - Direct Charge Transactions" report.
+ * @param pathToXlsxFile - Path to the report.
+ * @returns - The parsed results.
+ */
 export function parseW217ExcelReport(
   pathToXlsxFile: string
 ): W217ExcelReportResults {

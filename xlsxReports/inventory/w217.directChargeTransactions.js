@@ -22,6 +22,11 @@ function isDataRow(row) {
         // Has a value in the quantity column
         Number.isFinite(Number.parseFloat(row[11] ?? '')));
 }
+/**
+ * Parses the XLSX version of the "W217 - Direct Charge Transactions" report.
+ * @param pathToXlsxFile - Path to the report.
+ * @returns - The parsed results.
+ */
 export function parseW217ExcelReport(pathToXlsxFile) {
     const workbook = getXLSXWorkBook(pathToXlsxFile);
     /*

@@ -87,6 +87,13 @@ function fixZeroedCostsIfApplicable(results) {
     debug(transactionsToConsiderUpdating);
     return results;
 }
+/**
+ * Parses the XLSX version of the "W223 - Inventory Transaction Details Report".
+ * @param pathToXlsxFile - Path to the report.
+ * @param options - Optional.
+ * @param options.inverseAmounts - When "true", the signs on the quantity and cost values will be inversed, making "ISSUE" records positive.
+ * @returns - The parsed results.
+ */
 export function parseW223ExcelReport(pathToXlsxFile, options) {
     const workbook = getXLSXWorkBook(pathToXlsxFile);
     /*
@@ -103,7 +110,7 @@ export function parseW223ExcelReport(pathToXlsxFile, options) {
     /*
      * Loop through sheets
      */
-    const valueMultiplier = options?.inverseAmounts ?? false ? -1 : 1;
+    const valueMultiplier = (options?.inverseAmounts ?? false) ? -1 : 1;
     debug(`Looping through ${workbook.SheetNames.length} sheets`);
     for (const sheetName of workbook.SheetNames) {
         // eslint-disable-next-line security/detect-object-injection
