@@ -20,7 +20,7 @@
   "scripts": {
     "test": "node --test",
     "test:csv": "node --test --test-name-pattern=\"node-faster-report-parser/csv\"",
-    "test:xlsx": "cross-env NODE_ENV=dev DEBUG=faster-api:* node --test --test-name-pattern=\"node-faster-report-parser/xlsx\"",
+    "test:xlsx": "cross-env NODE_ENV=dev DEBUG=faster-report-parser:* node --test --test-name-pattern=\"node-faster-report-parser/xlsx\"",
     "coverage": "c8 --reporter=lcov --reporter=text --reporter=text-summary node --test"
   },
   "keywords": [
