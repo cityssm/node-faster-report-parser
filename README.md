@@ -14,6 +14,7 @@ Useful when developing integrations between FASTER Web and other systems.
 
 | #     | Report Name                          | CSV | XLSX |
 | ----- | ------------------------------------ | --- | ---- |
+| W114  | Asset Master List                    |     | ✔️   |
 | W200  | Inventory Report                     |     | ✔️   |
 | W200S | Inventory Summary Report             | ✔️  |      |
 | W217  | Direct Charge Transactions           |     | ✔️   |
