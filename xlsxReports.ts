@@ -1,4 +1,11 @@
 export {
+  parseW114ExcelReport,
+  w114ReportName,
+  type W114ExcelReportResults,
+  type W114AssetReportData
+} from './xlsxReports/assets/w114.assetMasterList.js'
+
+export {
   parseW200ExcelReport,
   w200ReportName,
   type W200ExcelReportResults,

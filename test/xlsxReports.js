@@ -1,8 +1,21 @@
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
 import { isValidDateString, isValidTimeString } from '@cityssm/utils-datetime';
-import { parseW200ExcelReport, parseW217ExcelReport, parseW223ExcelReport, w200ReportName, w217ReportName, w223ReportName } from '../xlsxReports.js';
+import { parseW114ExcelReport, parseW200ExcelReport, parseW217ExcelReport, parseW223ExcelReport, w114ReportName, w200ReportName, w217ReportName, w223ReportName } from '../xlsxReports.js';
 await describe('node-faster-report-parser/xlsx', async () => {
+    await it('Parses "W114 - Asset Master List"', () => {
+        const results = parseW114ExcelReport('./samples/w114_assetMasterList.xlsx');
+        console.log(results);
+        assert.strictEqual(results.reportName, w114ReportName);
+        assert(isValidDateString(results.exportDate));
+        assert(isValidTimeString(results.exportTime));
+        assert(results.data.length > 0);
+        console.log(results.data[0]);
+        // console.log(results.data[0].storeroomDescription)
+        for (const asset of results.data) {
+            assert.notStrictEqual(asset.assetNumber, '');
+        }
+    });
     await it('Parses "W200 - Inventory Report"', () => {
         const results = parseW200ExcelReport('./samples/w200.xlsx');
         // console.log(results)
