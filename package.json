@@ -45,7 +45,7 @@
     "@types/debug": "^4.1.12",
     "@types/node": "^20.14.12",
     "@types/papaparse": "^5.3.14",
-    "eslint-config-cityssm": "^5.0.1",
+    "eslint-config-cityssm": "^11.0.0",
     "prettier-config-cityssm": "^1.0.0"
   },
   "dependencies": {
