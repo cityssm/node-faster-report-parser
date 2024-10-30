@@ -58,7 +58,7 @@ function isDataRow(row: XlsxDataRow): boolean {
 /**
  * Parses the XLSX version of the "W200 - Inventory Report".
  * @param pathToXlsxFile - Path to the report.
- * @returns - The parsed results.
+ * @returns The parsed results.
  */
 export function parseW200ExcelReport(
   pathToXlsxFile: string
@@ -93,17 +93,11 @@ export function parseW200ExcelReport(
      * Loop through rows
      */
 
-    let storeroom: W200StoreroomReportData | undefined
-
     for (const row of worksheetData) {
       if (isStoreroomRow(row)) {
-        if (storeroom !== undefined) {
-          results.data.push(storeroom)
-        }
-
         const storeroomRawText = row[0] ?? ''
 
-        storeroom = {
+        results.data.push({
           storeroom: storeroomRawText
             .slice(11, storeroomRawText.indexOf(' - '))
             .trim(),
@@ -111,9 +105,9 @@ export function parseW200ExcelReport(
             .slice(storeroomRawText.indexOf(' - ') + 3)
             .trim(),
           items: []
-        }
-      } else if (isDataRow(row) && storeroom !== undefined) {
-        storeroom.items.push({
+        })
+      } else if (isDataRow(row)) {
+        results.data.at(-1)?.items.push({
           itemNumber: row[0] ?? '',
           itemName: row[1] ?? '',
           binLocation: row[3] ?? '',
@@ -130,11 +124,7 @@ export function parseW200ExcelReport(
         })
       }
     }
-
-    if (storeroom !== undefined) {
-      results.data.push(storeroom)
-    }
   }
 
-  return results as W200ExcelReportResults
+  return results
 }

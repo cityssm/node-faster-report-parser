@@ -27,6 +27,6 @@ export interface W200ExcelReportResults extends FasterExcelReportResults {
 /**
  * Parses the XLSX version of the "W200 - Inventory Report".
  * @param pathToXlsxFile - Path to the report.
- * @returns - The parsed results.
+ * @returns The parsed results.
  */
 export declare function parseW200ExcelReport(pathToXlsxFile: string): W200ExcelReportResults;
