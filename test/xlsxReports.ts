@@ -1,3 +1,6 @@
+// eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
+/* eslint-disable no-secrets/no-secrets */
+
 import assert from 'node:assert'
 import { describe, it } from 'node:test'
 
@@ -8,10 +11,12 @@ import {
   parseW200ExcelReport,
   parseW217ExcelReport,
   parseW223ExcelReport,
+  parseW311ExcelReport,
   w114ReportName,
   w200ReportName,
   w217ReportName,
-  w223ReportName
+  w223ReportName,
+  w311ReportName
 } from '../xlsxReports.js'
 
 await describe('node-faster-report-parser/xlsx', async () => {
@@ -65,7 +70,6 @@ await describe('node-faster-report-parser/xlsx', async () => {
 
   await it('Parses "W217 - Direct Charge Transactions"', () => {
     const results = parseW217ExcelReport(
-      // eslint-disable-next-line no-secrets/no-secrets
       './samples/w217_directChargeTransactions.xlsx'
     )
 
@@ -149,7 +153,6 @@ await describe('node-faster-report-parser/xlsx', async () => {
 
     await it('Parses without page breaks', () => {
       const results = parseW223ExcelReport(
-        // eslint-disable-next-line no-secrets/no-secrets
         './samples/w223_inventoryTransactionDetails_noPageBreaks.xlsx'
       )
 
@@ -196,5 +199,19 @@ await describe('node-faster-report-parser/xlsx', async () => {
         }
       }
     })
+  })
+
+  await it('Parses "W311 - Active Work Orders by Shop"', () => {
+    const results = parseW311ExcelReport('./samples/w311_activeWorkOrdersByShop.xlsx')
+
+    console.log(JSON.stringify(results, undefined, 2))
+
+    assert.strictEqual(results.reportName, w311ReportName)
+    assert(isValidDateString(results.exportDate))
+    assert(isValidTimeString(results.exportTime))
+
+    assert(results.data.length > 0)
+    assert((results.data.at(0)?.workOrders.length ?? 0) > 0)
+    assert((results.data.at(0)?.workOrders.at(0)?.repairs.length ?? 0) > 0)
   })
 })

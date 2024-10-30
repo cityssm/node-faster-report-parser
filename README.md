@@ -20,6 +20,7 @@ Useful when developing integrations between FASTER Web and other systems.
 | W217  | Direct Charge Transactions           |     | ✔️   |
 | W223  | Inventory Transaction Details Report | ✔️  | ✔️   |
 | W235  | Inventory Snapshot                   | ✔️  |      |
+| W311  | Active Work Orders by Shop           |     | ✔️   |
 | W600  | Pick List Values Report              | ✔️  |      |
 
 ## Important Notes

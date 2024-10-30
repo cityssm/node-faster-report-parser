@@ -1,3 +1,6 @@
+// eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
+/* eslint-disable no-secrets/no-secrets */
+
 export {
   parseW114ExcelReport,
   w114ReportName,
@@ -19,7 +22,6 @@ export {
   type W217ExcelReportResults,
   type W217DocumentReportData,
   type W217TransactionReportData
-  // eslint-disable-next-line no-secrets/no-secrets
 } from './xlsxReports/inventory/w217.directChargeTransactions.js'
 
 export {
@@ -29,3 +31,12 @@ export {
   type W223StoreroomReportData,
   type W223TransactionReportData
 } from './xlsxReports/inventory/w223.inventoryTransactionDetails.js'
+
+export {
+  parseW311ExcelReport,
+  w311ReportName,
+  type W311ExcelReportResults,
+  type W311ShopReportData,
+  type W311WorkOrderReportData,
+  type W311RepairReportData
+} from './xlsxReports/maintenance/w311.activeWorkOrdersByShop.js'
