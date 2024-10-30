@@ -81,11 +81,7 @@ export function parseW311ExcelReport(pathToXlsxFile) {
                  */
                 const dateOpenedUnformatted = cleanDelimitedDataField(row[6]);
                 const dateOpenedSplit = dateOpenedUnformatted.split('/');
-                const openedDate = (dateOpenedSplit[2] +
-                    '-' +
-                    dateOpenedSplit[0] +
-                    '-' +
-                    dateOpenedSplit[1]);
+                const openedDate = `${dateOpenedSplit[2]}-${dateOpenedSplit[0]}-${dateOpenedSplit[1]}`;
                 /*
                  * Days Open
                  */

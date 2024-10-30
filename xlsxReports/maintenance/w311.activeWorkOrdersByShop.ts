@@ -146,11 +146,8 @@ export function parseW311ExcelReport(
 
         const dateOpenedSplit = dateOpenedUnformatted.split('/')
 
-        const openedDate = (dateOpenedSplit[2] +
-          '-' +
-          dateOpenedSplit[0] +
-          '-' +
-          dateOpenedSplit[1]) as DateString
+        const openedDate =
+          `${dateOpenedSplit[2]}-${dateOpenedSplit[0]}-${dateOpenedSplit[1]}` as DateString
 
         /*
          * Days Open
