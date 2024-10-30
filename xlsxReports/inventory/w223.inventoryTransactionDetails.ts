@@ -234,7 +234,7 @@ function fixZeroedCostsIfApplicable(
  * Parses the XLSX version of the "W223 - Inventory Transaction Details Report".
  * @param pathToXlsxFile - Path to the report.
  * @param options - Optional.
- * @param options.inverseAmounts - When "true", the signs on the quantity and cost values will be inversed, making "ISSUE" records positive.
+ * @param options.inverseAmounts - When `true`, the signs on the quantity and cost values will be inversed, making "ISSUE" records positive.
  * @returns - The parsed results.
  */
 export function parseW223ExcelReport(
@@ -278,17 +278,11 @@ export function parseW223ExcelReport(
      * Loop through rows
      */
 
-    let storeroom: W223StoreroomReportData | undefined
-
     for (const row of worksheetData) {
       if (isStoreroomRow(row)) {
-        if (storeroom !== undefined) {
-          results.data.push(storeroom)
-        }
-
         const storeroomRawText = row[0] ?? ''
 
-        storeroom = {
+        results.data.push({
           storeroom: storeroomRawText
             .slice(11, storeroomRawText.indexOf(' - '))
             .trim(),
@@ -296,8 +290,8 @@ export function parseW223ExcelReport(
             .slice(storeroomRawText.indexOf(' - ') + 3)
             .trim(),
           transactions: []
-        }
-      } else if (isDataRow(row) && storeroom !== undefined) {
+        })
+      } else if (isDataRow(row)) {
         const transactionDate = new Date(row[5] ?? '')
         const createdDate = new Date(row[14] ?? '')
         const modifiedDate = new Date(row[15] ?? '')
@@ -322,12 +316,8 @@ export function parseW223ExcelReport(
 
         populateTransactionDetailsMetadata(transactionData)
 
-        storeroom.transactions.push(transactionData)
+        results.data.at(-1)?.transactions.push(transactionData)
       }
-    }
-
-    if (storeroom !== undefined) {
-      results.data.push(storeroom)
     }
   }
 

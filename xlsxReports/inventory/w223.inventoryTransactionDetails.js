@@ -91,7 +91,7 @@ function fixZeroedCostsIfApplicable(results) {
  * Parses the XLSX version of the "W223 - Inventory Transaction Details Report".
  * @param pathToXlsxFile - Path to the report.
  * @param options - Optional.
- * @param options.inverseAmounts - When "true", the signs on the quantity and cost values will be inversed, making "ISSUE" records positive.
+ * @param options.inverseAmounts - When `true`, the signs on the quantity and cost values will be inversed, making "ISSUE" records positive.
  * @returns - The parsed results.
  */
 export function parseW223ExcelReport(pathToXlsxFile, options) {
@@ -118,14 +118,10 @@ export function parseW223ExcelReport(pathToXlsxFile, options) {
         /*
          * Loop through rows
          */
-        let storeroom;
         for (const row of worksheetData) {
             if (isStoreroomRow(row)) {
-                if (storeroom !== undefined) {
-                    results.data.push(storeroom);
-                }
                 const storeroomRawText = row[0] ?? '';
-                storeroom = {
+                results.data.push({
                     storeroom: storeroomRawText
                         .slice(11, storeroomRawText.indexOf(' - '))
                         .trim(),
@@ -133,9 +129,9 @@ export function parseW223ExcelReport(pathToXlsxFile, options) {
                         .slice(storeroomRawText.indexOf(' - ') + 3)
                         .trim(),
                     transactions: []
-                };
+                });
             }
-            else if (isDataRow(row) && storeroom !== undefined) {
+            else if (isDataRow(row)) {
                 const transactionDate = new Date(row[5] ?? '');
                 const createdDate = new Date(row[14] ?? '');
                 const modifiedDate = new Date(row[15] ?? '');
@@ -154,11 +150,8 @@ export function parseW223ExcelReport(pathToXlsxFile, options) {
                     modifiedDateTime: `${dateToString(modifiedDate)} ${dateToTimeString(modifiedDate)}`
                 };
                 populateTransactionDetailsMetadata(transactionData);
-                storeroom.transactions.push(transactionData);
+                results.data.at(-1)?.transactions.push(transactionData);
             }
-        }
-        if (storeroom !== undefined) {
-            results.data.push(storeroom);
         }
     }
     fixZeroedCostsIfApplicable(results);

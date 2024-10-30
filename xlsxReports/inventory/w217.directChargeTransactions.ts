@@ -103,31 +103,34 @@ export function parseW217ExcelReport(
      * Loop through rows
      */
 
-    let directChargeDocument: W217DocumentReportData | undefined
-
     for (const row of worksheetData) {
       if (isDocumentRow(row)) {
-        if (directChargeDocument !== undefined) {
-          results.data.push(directChargeDocument)
-        }
-
-        // debug(`DOCUMENT ROW: ${JSON.stringify(row)}`)
-
-        directChargeDocument = {
-          documentNumber: Number.parseInt((row[2] ?? '').trim().slice(7).trim(), 10),
+        results.data.push({
+          documentNumber: Number.parseInt(
+            (row[2] ?? '').trim().slice(7).trim(),
+            10
+          ),
           contact: (row[6] ?? '').trim().slice(9).trim(),
           documentStatus: (row[9] ?? '').trim().slice(17).trim(),
           symptom: '',
           shop: '',
           transactions: []
-        }
-      } else if (isSymptomRow(row) && directChargeDocument !== undefined) {
+        })
+      } else if (isSymptomRow(row)) {
         // debug(`SYMPTOM ROW: ${JSON.stringify(row)}`)
 
-        directChargeDocument.symptom = (row[2] ?? '').trim().slice(8).trim()
-        directChargeDocument.shop = (row[6] ?? '').trim().slice(6).trim()
-      } else if (isDataRow(row) && directChargeDocument !== undefined) {
-        directChargeDocument.transactions.push({
+        ;(results.data.at(-1) as W217DocumentReportData).symptom = (
+          row[2] ?? ''
+        )
+          .trim()
+          .slice(8)
+          .trim()
+        ;(results.data.at(-1) as W217DocumentReportData).shop = (row[6] ?? '')
+          .trim()
+          .slice(6)
+          .trim()
+      } else if (isDataRow(row)) {
+        results.data.at(-1)?.transactions.push({
           storeroom: (row[3] ?? '').trim(),
           itemNumber: row[4] ?? '',
           itemName: row[5] ?? '',
@@ -138,10 +141,6 @@ export function parseW217ExcelReport(
           cost: Number.parseFloat(row[12] ?? '')
         })
       }
-    }
-
-    if (directChargeDocument !== undefined) {
-      results.data.push(directChargeDocument)
     }
   }
 

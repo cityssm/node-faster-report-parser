@@ -55,7 +55,7 @@ export interface W223ExcelReportResults extends FasterExcelReportResults {
  * Parses the XLSX version of the "W223 - Inventory Transaction Details Report".
  * @param pathToXlsxFile - Path to the report.
  * @param options - Optional.
- * @param options.inverseAmounts - When "true", the signs on the quantity and cost values will be inversed, making "ISSUE" records positive.
+ * @param options.inverseAmounts - When `true`, the signs on the quantity and cost values will be inversed, making "ISSUE" records positive.
  * @returns - The parsed results.
  */
 export declare function parseW223ExcelReport(pathToXlsxFile: string, options?: {
