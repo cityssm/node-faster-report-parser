@@ -9,9 +9,10 @@ export declare function getXLSXWorkBook(pathToXlsxFile: string): XLSX.WorkBook;
 /**
  * Parses an XLSX WorkSheet into usable data.
  * @param workSheet - An XLSX WorkSheet object.
+ * @param formatAsStrings - Set to `true` when dates are included.
  * @returns - The sheet data as strings, array[row][column]
  */
-export declare function getXLSXWorkSheetData(workSheet: XLSX.WorkSheet): XlsxDataRow[];
+export declare function getXLSXWorkSheetData(workSheet: XLSX.WorkSheet, formatAsStrings?: boolean): XlsxDataRow[];
 interface ExtractReportMetadataOptions {
     /** The first row is 1. */
     reportNameRowNumber: number;

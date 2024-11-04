@@ -3,9 +3,11 @@
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
 import { isValidDateString, isValidTimeString } from '@cityssm/utils-datetime';
-import { parseW114ExcelReport, parseW200ExcelReport, parseW217ExcelReport, parseW223ExcelReport, parseW311ExcelReport, w114ReportName, w200ReportName, w217ReportName, w223ReportName, w311ReportName } from '../xlsxReports.js';
+import { parseW114ExcelReport, parseW200ExcelReport, parseW217ExcelReport, parseW223ExcelReport, parseW311ExcelReport, parseW604ExcelReport, w114ReportName, w200ReportName, w217ReportName, w223ReportName, w311ReportName, w604ReportName } from '../xlsxReports.js';
 await describe('node-faster-report-parser/xlsx', async () => {
+    // eslint-disable-next-line @cspell/spellchecker
     await it('Parses "W114 - Asset Master List"', () => {
+        // eslint-disable-next-line @cspell/spellchecker
         const results = parseW114ExcelReport('./samples/w114_assetMasterList.xlsx');
         console.log(results);
         assert.strictEqual(results.reportName, w114ReportName);
@@ -20,7 +22,7 @@ await describe('node-faster-report-parser/xlsx', async () => {
     });
     await it('Parses "W200 - Inventory Report"', () => {
         const results = parseW200ExcelReport('./samples/w200.xlsx');
-        // console.log(results)
+        console.log(results);
         assert.strictEqual(results.reportName, w200ReportName);
         assert(isValidDateString(results.exportDate));
         assert(isValidTimeString(results.exportTime));
@@ -76,7 +78,8 @@ await describe('node-faster-report-parser/xlsx', async () => {
                 for (const transaction of storeroom.transactions) {
                     assert.notStrictEqual(transaction.itemNumber, '');
                     assert.notStrictEqual(transaction.itemName, '');
-                    if (transaction.transactionType === 'DC ISSUE' || transaction.transactionType === 'WO ISSUE') {
+                    if (transaction.transactionType === 'DC ISSUE' ||
+                        transaction.transactionType === 'WO ISSUE') {
                         // inverseAmounts = true
                         assert(transaction.quantity >= 0);
                     }
@@ -106,7 +109,8 @@ await describe('node-faster-report-parser/xlsx', async () => {
                 for (const transaction of storeroom.transactions) {
                     assert.notStrictEqual(transaction.itemNumber, '');
                     assert.notStrictEqual(transaction.itemName, '');
-                    if (transaction.transactionType === 'DC ISSUE' || transaction.transactionType === 'WO ISSUE') {
+                    if (transaction.transactionType === 'DC ISSUE' ||
+                        transaction.transactionType === 'WO ISSUE') {
                         // inverseAmounts = false
                         assert(transaction.quantity <= 0);
                     }
@@ -124,12 +128,20 @@ await describe('node-faster-report-parser/xlsx', async () => {
     });
     await it('Parses "W311 - Active Work Orders by Shop"', () => {
         const results = parseW311ExcelReport('./samples/w311_activeWorkOrdersByShop.xlsx');
-        console.log(JSON.stringify(results, undefined, 2));
+        // console.log(JSON.stringify(results, undefined, 2))
         assert.strictEqual(results.reportName, w311ReportName);
         assert(isValidDateString(results.exportDate));
         assert(isValidTimeString(results.exportTime));
         assert(results.data.length > 0);
         assert((results.data.at(0)?.workOrders.length ?? 0) > 0);
         assert((results.data.at(0)?.workOrders.at(0)?.repairs.length ?? 0) > 0);
+    });
+    await it('Parses "W604 - Integration Log Viewer"', () => {
+        const results = parseW604ExcelReport('./samples/w604_integrationLogViewer.xlsx');
+        // console.log(JSON.stringify(results, undefined, 2))
+        assert.strictEqual(results.reportName, w604ReportName);
+        assert(isValidDateString(results.exportDate));
+        assert(isValidTimeString(results.exportTime));
+        assert(results.data.length > 0);
     });
 });

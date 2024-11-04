@@ -84,6 +84,7 @@ export function parseW217ExcelReport(
     exportDateTimeRowNumber: 5
   }) as W217ExcelReportResults
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (results.reportName !== w217ReportName) {
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     throw new Error(`Invalid reportName: ${results.reportName}`)

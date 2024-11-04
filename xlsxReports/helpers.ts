@@ -13,17 +13,19 @@ XLSX.set_fs(fs)
  * @returns XLSX WorkBook object
  */
 export function getXLSXWorkBook(pathToXlsxFile: string): XLSX.WorkBook {
-  return XLSX.readFile(pathToXlsxFile, {})
+  return XLSX.readFile(pathToXlsxFile, { })
 }
 
 /**
  * Parses an XLSX WorkSheet into usable data.
  * @param workSheet - An XLSX WorkSheet object.
+ * @param formatAsStrings - Set to `true` when dates are included.
  * @returns - The sheet data as strings, array[row][column]
  */
-export function getXLSXWorkSheetData(workSheet: XLSX.WorkSheet): XlsxDataRow[] {
+export function getXLSXWorkSheetData(workSheet: XLSX.WorkSheet, formatAsStrings = false): XlsxDataRow[] {
   return XLSX.utils.sheet_to_json(workSheet, {
-    header: 1
+    header: 1,
+    raw: !formatAsStrings
   })
 }
 

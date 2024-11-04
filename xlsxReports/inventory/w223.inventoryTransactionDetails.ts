@@ -47,6 +47,7 @@ type TransactionTypeDetails =
         | `FROM DOC ISSUE: ${number} TO VEN: ${number}`
         | ''
         | string
+
       documentNumber?: number
       vendorNumber?: number
     }
@@ -62,11 +63,14 @@ type TransactionTypeDetails =
         | `FROM WO ISSUE: ${number}`
         | `TRANSFER FROM STRM: ${string} TO STRM: ${string}`
         | string
+
       documentNumber?: number
     }
   | {
       transactionType: 'INV ADJUSTMENT'
-      transactionDetails: `OLD QTY: ${number}  NEW QTY: ${number}` | string // two spaces are intentional
+      transactionDetails:
+        | `OLD QTY: ${number}  NEW QTY: ${number}` // two spaces are intentional
+        | string
     }
   | {
       transactionType:
@@ -178,14 +182,12 @@ function populateTransactionDetailsMetadata(
  * @param results - W217 Report Data
  * @returns - A corrected report.
  */
-function fixZeroedCostsIfApplicable(
-  results: W223ExcelReportResults
-): W223ExcelReportResults {
+function fixZeroedCostsIfApplicable(results: W223ExcelReportResults): void {
   if (
     results.version.report !== '20240108.1200' ||
     results.version.script !== '20240104.1200'
   ) {
-    return results
+    return
   }
 
   const transactionsToConsiderUpdating: W223TransactionReportData[] = []
@@ -203,14 +205,11 @@ function fixZeroedCostsIfApplicable(
         transactionData.transactionType === 'RETURN BIN'
       ) {
         const transactionsToUpdate = transactionsToConsiderUpdating.filter(
-          (possibleTransaction) => {
-            return (
-              possibleTransaction.unitTrueCost === 0 &&
-              transactionData.itemNumber === possibleTransaction.itemNumber &&
-              transactionData.createdDateTime ===
-                possibleTransaction.modifiedDateTime
-            )
-          }
+          (possibleTransaction) =>
+            possibleTransaction.unitTrueCost === 0 &&
+            transactionData.itemNumber === possibleTransaction.itemNumber &&
+            transactionData.createdDateTime ===
+              possibleTransaction.modifiedDateTime
         )
 
         for (const transactionToUpdate of transactionsToUpdate) {
@@ -226,8 +225,6 @@ function fixZeroedCostsIfApplicable(
   }
 
   debug(transactionsToConsiderUpdating)
-
-  return results
 }
 
 /**
@@ -257,6 +254,7 @@ export function parseW223ExcelReport(
     exportDateTimeRowNumber: 5
   }) as W223ExcelReportResults
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (results.reportName !== w223ReportName) {
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     throw new Error(`Invalid reportName: ${results.reportName}`)

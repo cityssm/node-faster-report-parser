@@ -22,6 +22,7 @@ Useful when developing integrations between FASTER Web and other systems.
 | W235  | Inventory Snapshot                   | ✔️  |      |
 | W311  | Active Work Orders by Shop           |     | ✔️   |
 | W600  | Pick List Values Report              | ✔️  |      |
+| W604  | Integration Log Viewer               |     | ✔️   |
 
 ## Important Notes
 

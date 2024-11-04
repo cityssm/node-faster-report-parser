@@ -13,11 +13,13 @@ export function getXLSXWorkBook(pathToXlsxFile) {
 /**
  * Parses an XLSX WorkSheet into usable data.
  * @param workSheet - An XLSX WorkSheet object.
+ * @param formatAsStrings - Set to `true` when dates are included.
  * @returns - The sheet data as strings, array[row][column]
  */
-export function getXLSXWorkSheetData(workSheet) {
+export function getXLSXWorkSheetData(workSheet, formatAsStrings = false) {
     return XLSX.utils.sheet_to_json(workSheet, {
-        header: 1
+        header: 1,
+        raw: !formatAsStrings
     });
 }
 function trimRowToData(row) {

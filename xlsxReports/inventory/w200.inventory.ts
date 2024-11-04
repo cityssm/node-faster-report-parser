@@ -74,6 +74,7 @@ export function parseW200ExcelReport(
     exportDateTimeRowNumber: 3
   }) as W200ExcelReportResults
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (results.reportName !== w200ReportName) {
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     throw new Error(`Invalid reportName: ${results.reportName}`)
@@ -122,6 +123,8 @@ export function parseW200ExcelReport(
           stockExtValue: Number.parseFloat(row[14] ?? ''),
           stockExtValueWithMarkup: Number.parseFloat(row[16] ?? '')
         })
+      } else {
+        debug(row)
       }
     }
   }

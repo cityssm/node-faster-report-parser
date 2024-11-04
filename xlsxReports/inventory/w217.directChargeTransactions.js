@@ -36,6 +36,7 @@ export function parseW217ExcelReport(pathToXlsxFile) {
         reportNameRowNumber: 2,
         exportDateTimeRowNumber: 5
     });
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (results.reportName !== w217ReportName) {
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         throw new Error(`Invalid reportName: ${results.reportName}`);

@@ -57,7 +57,7 @@ function populateTransactionDetailsMetadata(transactionData) {
 function fixZeroedCostsIfApplicable(results) {
     if (results.version.report !== '20240108.1200' ||
         results.version.script !== '20240104.1200') {
-        return results;
+        return;
     }
     const transactionsToConsiderUpdating = [];
     for (const storeroomData of results.data) {
@@ -69,12 +69,10 @@ function fixZeroedCostsIfApplicable(results) {
             }
             else if (transactionData.transactionType === 'RETURN TO INV' ||
                 transactionData.transactionType === 'RETURN BIN') {
-                const transactionsToUpdate = transactionsToConsiderUpdating.filter((possibleTransaction) => {
-                    return (possibleTransaction.unitTrueCost === 0 &&
-                        transactionData.itemNumber === possibleTransaction.itemNumber &&
-                        transactionData.createdDateTime ===
-                            possibleTransaction.modifiedDateTime);
-                });
+                const transactionsToUpdate = transactionsToConsiderUpdating.filter((possibleTransaction) => possibleTransaction.unitTrueCost === 0 &&
+                    transactionData.itemNumber === possibleTransaction.itemNumber &&
+                    transactionData.createdDateTime ===
+                        possibleTransaction.modifiedDateTime);
                 for (const transactionToUpdate of transactionsToUpdate) {
                     debug(`Fixing transaction: ${JSON.stringify(transactionToUpdate)}`);
                     transactionToUpdate.unitTrueCost = transactionData.unitTrueCost;
@@ -85,7 +83,6 @@ function fixZeroedCostsIfApplicable(results) {
         }
     }
     debug(transactionsToConsiderUpdating);
-    return results;
 }
 /**
  * Parses the XLSX version of the "W223 - Inventory Transaction Details Report".
@@ -103,6 +100,7 @@ export function parseW223ExcelReport(pathToXlsxFile, options) {
         reportNameRowNumber: 4,
         exportDateTimeRowNumber: 5
     });
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (results.reportName !== w223ReportName) {
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         throw new Error(`Invalid reportName: ${results.reportName}`);
