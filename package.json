@@ -43,9 +43,9 @@
   "homepage": "https://github.com/cityssm/node-faster-report-parser#readme",
   "devDependencies": {
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.8.7",
+    "@types/node": "^22.9.1",
     "@types/papaparse": "^5.3.15",
-    "eslint-config-cityssm": "^15.0.1",
+    "eslint-config-cityssm": "^15.2.0",
     "prettier-config-cityssm": "^1.0.0"
   },
   "dependencies": {
