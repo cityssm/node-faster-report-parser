@@ -67,10 +67,10 @@ console.log(parsedReport.data[0].storeroomDescription)
 
 - [@cityssm/worktech-api](https://www.npmjs.com/package/@cityssm/worktech-api) - Unofficial integrations with the WorkTech work order management system.
 
-## More Code for FASTER Web
+## Related FASTER Web Projects
 
-[FASTER Web Helper](https://github.com/cityssm/faster-web-helper)<br />
-A service to support integrations with the FASTER Web fleet management system.
+[FASTER Web Report Exporter](https://github.com/cityssm/node-faster-report-exporter)<br />
+On demand exports of selected reports from the FASTER Web fleet management system.
 
-[Userscripts for FASTER Web](https://cityssm.github.io/userscripts/#userscripts-for-faster-web)<br />
-Fixes some of the common irks when using FASTER Web.
+[FASTER Web Projects](https://github.com/cityssm/faster-web-projects)<br />
+A list of the City's several open source projects related to the FASTER Web fleet management system.
