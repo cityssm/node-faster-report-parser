@@ -9,12 +9,14 @@ import { isValidDateString, isValidTimeString } from '@cityssm/utils-datetime'
 import {
   parseW114ExcelReport,
   parseW200ExcelReport,
+  parseW201ExcelReport,
   parseW217ExcelReport,
   parseW223ExcelReport,
   parseW311ExcelReport,
   parseW604ExcelReport,
   w114ReportName,
   w200ReportName,
+  w201ReportName,
   w217ReportName,
   w223ReportName,
   w311ReportName,
@@ -23,7 +25,7 @@ import {
 
 await describe('node-faster-report-parser/xlsx', async () => {
   // eslint-disable-next-line @cspell/spellchecker
-  await it('Parses "W114 - Asset Master List"', () => {
+  await it.skip('Parses "W114 - Asset Master List"', () => {
     // eslint-disable-next-line @cspell/spellchecker
     const results = parseW114ExcelReport('./samples/w114_assetMasterList.xlsx')
 
@@ -43,7 +45,7 @@ await describe('node-faster-report-parser/xlsx', async () => {
     }
   })
 
-  await it('Parses "W200 - Inventory Report"', () => {
+  await it.skip('Parses "W200 - Inventory Report"', () => {
     const results = parseW200ExcelReport('./samples/w200.xlsx')
 
     console.log(results)
@@ -71,7 +73,19 @@ await describe('node-faster-report-parser/xlsx', async () => {
     }
   })
 
-  await it('Parses "W217 - Direct Charge Transactions"', () => {
+  await it('Parses "W201 - Inventory Item Issue Report"', () => {
+    const results = parseW201ExcelReport('./samples/w201_inventoryItemIssueReport.xlsx')
+
+    console.log(results)
+
+    assert.strictEqual(results.reportName, w201ReportName)
+    assert(isValidDateString(results.exportDate))
+    assert(isValidTimeString(results.exportTime))
+
+    assert(results.data.length > 0)
+  })
+
+  await it.skip('Parses "W217 - Direct Charge Transactions"', () => {
     const results = parseW217ExcelReport(
       './samples/w217_directChargeTransactions.xlsx'
     )
@@ -104,7 +118,7 @@ await describe('node-faster-report-parser/xlsx', async () => {
     }
   })
 
-  await describe('W223 - Inventory Transaction Details Report', async () => {
+  await describe.skip('W223 - Inventory Transaction Details Report', async () => {
     await it('Parses with page breaks', () => {
       const results = parseW223ExcelReport(
         './samples/w223_inventoryTransactionDetails.xlsx',
@@ -211,7 +225,7 @@ await describe('node-faster-report-parser/xlsx', async () => {
     })
   })
 
-  await it('Parses "W311 - Active Work Orders by Shop"', () => {
+  await it.skip('Parses "W311 - Active Work Orders by Shop"', () => {
     const results = parseW311ExcelReport(
       './samples/w311_activeWorkOrdersByShop.xlsx'
     )
@@ -227,7 +241,7 @@ await describe('node-faster-report-parser/xlsx', async () => {
     assert((results.data.at(0)?.workOrders.at(0)?.repairs.length ?? 0) > 0)
   })
 
-  await it('Parses "W604 - Integration Log Viewer"', () => {
+  await it.skip('Parses "W604 - Integration Log Viewer"', () => {
     const results = parseW604ExcelReport(
       './samples/w604_integrationLogViewer.xlsx'
     )

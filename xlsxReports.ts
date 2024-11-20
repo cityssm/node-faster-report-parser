@@ -17,6 +17,13 @@ export {
 } from './xlsxReports/inventory/w200.inventory.js'
 
 export {
+  parseW201ExcelReport,
+  w201ReportName,
+  type W201ExcelReportResults,
+  type W201ItemReportData
+} from './xlsxReports/inventory/w201.inventoryItemIssue.js'
+
+export {
   parseW217ExcelReport,
   w217ReportName,
   type W217ExcelReportResults,

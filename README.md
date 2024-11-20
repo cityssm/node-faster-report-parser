@@ -17,6 +17,7 @@ Useful when developing integrations between FASTER Web and other systems.
 | W114  | Asset Master List                    |     | ✔️   |
 | W200  | Inventory Report                     |     | ✔️   |
 | W200S | Inventory Summary Report             | ✔️  |      |
+| W201  | Inventory Item Issue Report          |     | ✔️   |
 | W217  | Direct Charge Transactions           |     | ✔️   |
 | W223  | Inventory Transaction Details Report | ✔️  | ✔️   |
 | W235  | Inventory Snapshot                   | ✔️  |      |
