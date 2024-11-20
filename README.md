@@ -10,6 +10,8 @@ into usable data objects.**
 
 Useful when developing integrations between FASTER Web and other systems.
 
+_This project is completely unofficial and is in no way affiliated with or endorsed by FASTER Asset Solutions or Transit Technologies._
+
 ## Supported "Standard" FASTER Web Reports
 
 | #     | Report Name                          | CSV | XLSX |
