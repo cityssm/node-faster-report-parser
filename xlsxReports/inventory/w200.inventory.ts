@@ -1,5 +1,6 @@
 import Debug from 'debug'
 
+import { DEBUG_NAMESPACE } from '../../debug.config.js'
 import {
   extractReportMetadata,
   getXLSXWorkBook,
@@ -7,7 +8,7 @@ import {
 } from '../helpers.js'
 import type { FasterExcelReportResults, XlsxDataRow } from '../xlsxTypes.js'
 
-const debug = Debug('faster-report-parser:xlsx:w200')
+const debug = Debug(`${DEBUG_NAMESPACE}:xlsx:w200`)
 
 export interface W200StoreroomReportData {
   storeroom: string

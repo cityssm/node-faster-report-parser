@@ -3,7 +3,10 @@
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
 import { isValidDateString, isValidTimeString } from '@cityssm/utils-datetime';
+import Debug from 'debug';
+import { DEBUG_ENABLE_NAMESPACES } from '../debug.config.js';
 import { parseW114ExcelReport, parseW200ExcelReport, parseW201ExcelReport, parseW217ExcelReport, parseW223ExcelReport, parseW311ExcelReport, parseW604ExcelReport, w114ReportName, w200ReportName, w201ReportName, w217ReportName, w223ReportName, w311ReportName, w604ReportName } from '../xlsxReports.js';
+Debug.enable(DEBUG_ENABLE_NAMESPACES);
 await describe('node-faster-report-parser/xlsx', async () => {
     await it('Parses "W114 - Asset Master List"', () => {
         const results = parseW114ExcelReport('./samples/w114_assetMasterList.xlsx');

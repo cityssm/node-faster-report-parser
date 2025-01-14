@@ -1,7 +1,8 @@
 import { dateToString } from '@cityssm/utils-datetime';
 import Debug from 'debug';
+import { DEBUG_NAMESPACE } from '../../debug.config.js';
 import { extractReportMetadata, getXLSXWorkBook, getXLSXWorkSheetData } from '../helpers.js';
-const debug = Debug('faster-report-parser:xlsx:w114');
+const debug = Debug(`${DEBUG_NAMESPACE}:xlsx:w114`);
 export const w114ReportName = 'W114 - Asset Master List';
 function isDataRow(row) {
     return row.length === 19 && Number.isFinite(Number.parseFloat(row[2] ?? ''));

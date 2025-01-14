@@ -1,7 +1,8 @@
 import { dateToString, dateToTimeString } from '@cityssm/utils-datetime';
 import Debug from 'debug';
+import { DEBUG_NAMESPACE } from '../../debug.config.js';
 import { extractReportMetadata, getXLSXWorkBook, getXLSXWorkSheetData } from '../helpers.js';
-const debug = Debug('faster-report-parser:xlsx:w604');
+const debug = Debug(`${DEBUG_NAMESPACE}:xlsx:w604`);
 export const w604ReportName = 'W604 - Integration Log Viewer';
 function isHeaderRow(row) {
     return row.length === 9 && row[0] === 'MESSAGE ID' && row[1] === 'TIMESTAMP';

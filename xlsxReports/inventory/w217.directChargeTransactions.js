@@ -1,7 +1,8 @@
 import { dateToString } from '@cityssm/utils-datetime';
 import Debug from 'debug';
+import { DEBUG_NAMESPACE } from '../../debug.config.js';
 import { extractReportMetadata, getXLSXWorkBook, getXLSXWorkSheetData } from '../helpers.js';
-const debug = Debug('faster-report-parser:xlsx:w217');
+const debug = Debug(`${DEBUG_NAMESPACE}:xlsx:w217`);
 export const w217ReportName = 'W217 - Direct Charge Transaction Detail';
 function isDocumentRow(row) {
     return (row.length === 10 &&

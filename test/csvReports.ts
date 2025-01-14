@@ -1,7 +1,12 @@
 import assert from 'node:assert'
 import { describe, it } from 'node:test'
 
+import Debug from 'debug'
+
 import { fasterCsvReportOptions, parseFasterCsvReport } from '../csvReports.js'
+import { DEBUG_ENABLE_NAMESPACES } from '../debug.config.js'
+
+Debug.enable(DEBUG_ENABLE_NAMESPACES)
 
 await describe('node-faster-report-parser/csv', async () => {
   await it('Parses "W200S - Inventory Summary Report"', async () => {

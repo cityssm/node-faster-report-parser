@@ -1,6 +1,7 @@
 import Debug from 'debug';
+import { DEBUG_NAMESPACE } from '../../debug.config.js';
 import { extractReportMetadata, getXLSXWorkBook, getXLSXWorkSheetData } from '../helpers.js';
-const debug = Debug('faster-report-parser:xlsx:w200');
+const debug = Debug(`${DEBUG_NAMESPACE}:xlsx:w200`);
 export const w200ReportName = 'W200 - Inventory Report';
 function isStoreroomRow(row) {
     return row.length === 17 && (row[0] ?? '').startsWith('STOREROOM: ');

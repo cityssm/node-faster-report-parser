@@ -2,8 +2,9 @@
 /* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 import { dateToString, dateToTimeString } from '@cityssm/utils-datetime';
 import Debug from 'debug';
+import { DEBUG_NAMESPACE } from '../../debug.config.js';
 import { extractReportMetadata, getXLSXWorkBook, getXLSXWorkSheetData } from '../helpers.js';
-const debug = Debug('faster-report-parser:xlsx:w223');
+const debug = Debug(`${DEBUG_NAMESPACE}:xlsx:w223`);
 export const w223ReportName = 'W223 - Inventory Transaction Details Report';
 function isStoreroomRow(row) {
     return (row.length === 16 &&
@@ -16,6 +17,7 @@ function isDataRow(row) {
         Number.isFinite(Number.parseFloat(row[9] ?? '')));
 }
 function populateTransactionDetailsMetadata(transactionData) {
+    // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
     switch (transactionData.transactionType) {
         case 'DC ISSUE':
         case 'WO ISSUE': {

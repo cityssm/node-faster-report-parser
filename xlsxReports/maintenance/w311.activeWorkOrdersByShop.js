@@ -1,6 +1,7 @@
 import Debug from 'debug';
+import { DEBUG_NAMESPACE } from '../../debug.config.js';
 import { extractReportMetadata, getXLSXWorkBook, getXLSXWorkSheetData } from '../helpers.js';
-const debug = Debug('faster-report-parser:xlsx:w311');
+const debug = Debug(`${DEBUG_NAMESPACE}:xlsx:w311`);
 export const w311ReportName = 'W311 - Active Work Orders by Shop';
 function cleanDelimitedDataField(rawString = '') {
     return rawString.slice(rawString.indexOf(':') + 1).trim();

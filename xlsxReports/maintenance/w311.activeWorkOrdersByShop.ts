@@ -1,6 +1,7 @@
 import type { DateString } from '@cityssm/utils-datetime'
 import Debug from 'debug'
 
+import { DEBUG_NAMESPACE } from '../../debug.config.js'
 import {
   extractReportMetadata,
   getXLSXWorkBook,
@@ -8,7 +9,7 @@ import {
 } from '../helpers.js'
 import type { FasterExcelReportResults, XlsxDataRow } from '../xlsxTypes.js'
 
-const debug = Debug('faster-report-parser:xlsx:w311')
+const debug = Debug(`${DEBUG_NAMESPACE}:xlsx:w311`)
 
 export const w311ReportName = 'W311 - Active Work Orders by Shop'
 

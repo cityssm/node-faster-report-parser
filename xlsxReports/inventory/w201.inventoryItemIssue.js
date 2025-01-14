@@ -1,7 +1,8 @@
 import { dateToString } from '@cityssm/utils-datetime';
 import Debug from 'debug';
+import { DEBUG_NAMESPACE } from '../../debug.config.js';
 import { extractReportMetadata, getXLSXWorkBook, getXLSXWorkSheetData } from '../helpers.js';
-const debug = Debug('faster-report-parser:xlsx:w201');
+const debug = Debug(`${DEBUG_NAMESPACE}:xlsx:w201`);
 export const w201ReportName = 'W201 - Inventory Item Issue Report';
 function isDataRow(row) {
     return row.length === 11 && /^\d+$/.test(row[0] ?? '');
