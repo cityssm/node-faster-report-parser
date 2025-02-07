@@ -25,6 +25,7 @@ _This project is completely unofficial and is in no way affiliated with or endor
 | W235  | Inventory Snapshot                   | ✔️  |      |
 | W311  | Active Work Orders by Shop           |     | ✔️   |
 | W600  | Pick List Values Report              | ✔️  |      |
+| W603  | Message Logger                       | ✔️  |      |
 | W604  | Integration Log Viewer               |     | ✔️   |
 
 ## Important Notes

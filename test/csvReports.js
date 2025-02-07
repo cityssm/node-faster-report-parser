@@ -33,4 +33,11 @@ await describe('node-faster-report-parser/csv', async () => {
         console.log(results.parameters);
         console.log(results.version);
     });
+    await it('Parses "W603 - Message Logger"', async () => {
+        const results = await parseFasterCsvReport('./samples/w603_messageLogger.csv', fasterCsvReportOptions.w603);
+        console.log(results.data[0]);
+        assert(results.data.length > 0);
+        console.log(results.parameters);
+        console.log(results.version);
+    });
 });

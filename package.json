@@ -44,16 +44,16 @@
   "homepage": "https://github.com/cityssm/node-faster-report-parser#readme",
   "devDependencies": {
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.10.6",
+    "@types/node": "^22.13.1",
     "@types/papaparse": "^5.3.15",
-    "eslint-config-cityssm": "^18.3.0",
+    "eslint-config-cityssm": "^19.0.0",
     "prettier-config-cityssm": "^1.0.0"
   },
   "dependencies": {
     "@cityssm/string-to-numeric": "^1.0.0",
     "@cityssm/utils-datetime": "^1.3.0",
     "debug": "^4.4.0",
-    "papaparse": "^5.5.1",
+    "papaparse": "^5.5.2",
     "xlsx": "https://github.com/cityssm/node-dependencies/raw/main/xlsx/xlsx-0.20.2.tgz"
   }
 }

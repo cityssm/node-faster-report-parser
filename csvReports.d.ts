@@ -23,9 +23,14 @@ export declare const fasterCsvReportOptions: {
      * W600 - Pick List Values Report
      */
     w600: ParseFasterCsvReportOptions<import("./csvReports/setup/w600.pickListValues.js").W600ReportRow>;
+    /**
+     * W603 - Message Logger
+     */
+    w603: ParseFasterCsvReportOptions<import("./csvReports/setup/w603.messageLogger.js").W603ReportRow>;
 };
 export type SupportedFasterCsvReportName = keyof typeof fasterCsvReportOptions | Capitalize<keyof typeof fasterCsvReportOptions>;
 export type { W200SReportRow } from './csvReports/inventory/w200s.inventorySummary.js';
 export type { W223ReportRow } from './csvReports/inventory/w223.inventoryTransactionDetails.js';
 export type { W235ReportRow } from './csvReports/inventory/w235.inventorySnapshot.js';
 export type { W600ReportRow } from './csvReports/setup/w600.pickListValues.js';
+export type { W603ReportRow } from './csvReports/setup/w603.messageLogger.js';

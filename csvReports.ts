@@ -14,6 +14,7 @@ import { w200s } from './csvReports/inventory/w200s.inventorySummary.js'
 import { w223 } from './csvReports/inventory/w223.inventoryTransactionDetails.js'
 import { w235 } from './csvReports/inventory/w235.inventorySnapshot.js'
 import { w600 } from './csvReports/setup/w600.pickListValues.js'
+import { w603 } from './csvReports/setup/w603.messageLogger.js'
 
 /**
  * Parses CSV files of Standard FASTER reports.
@@ -28,6 +29,7 @@ export async function parseFasterCsvReport<T>(
   // eslint-disable-next-line security/detect-non-literal-fs-filename
   const fileStream = fs.createReadStream(pathToCsvFile)
 
+  // eslint-disable-next-line promise/avoid-new
   return await new Promise<FasterCsvReportResults<T>>((resolve) => {
     const results: FasterCsvReportResults<T> = {
       data: [],
@@ -122,7 +124,12 @@ export const fasterCsvReportOptions = {
   /**
    * W600 - Pick List Values Report
    */
-  w600
+  w600,
+
+  /**
+   * W603 - Message Logger
+   */
+  w603
 }
 
 export type SupportedFasterCsvReportName =
@@ -133,3 +140,4 @@ export type { W200SReportRow } from './csvReports/inventory/w200s.inventorySumma
 export type { W223ReportRow } from './csvReports/inventory/w223.inventoryTransactionDetails.js'
 export type { W235ReportRow } from './csvReports/inventory/w235.inventorySnapshot.js'
 export type { W600ReportRow } from './csvReports/setup/w600.pickListValues.js'
+export type { W603ReportRow } from './csvReports/setup/w603.messageLogger.js'
