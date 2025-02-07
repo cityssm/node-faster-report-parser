@@ -28,6 +28,16 @@ _This project is completely unofficial and is in no way affiliated with or endor
 | W603  | Message Logger                       | ✔️  |      |
 | W604  | Integration Log Viewer               |     | ✔️   |
 
+## Advanced Parsers
+
+More than just parsing files into objects. 🧙‍♂️
+
+`extractInventoryImportErrors(messageLoggerData)`
+
+- Takes data from a parsed CSV "W603 - Message Logger" report,
+  attempts to identify errors related to the Inventory Import Utility (IIU) integration,
+  and provide context of where the errors occurred.
+
 ## Important Notes
 
 ⚠️ When parsing reports, use the files **as exported** from FASTER Web.<br />

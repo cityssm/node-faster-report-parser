@@ -16,6 +16,8 @@
     "./xlsx": "./xlsxReports.js",
     "./xlsxReports": "./xlsxReports.js",
     "./xlsxReports.js": "./xlsxReports.js",
+    "./advanced": "./advanced.js",
+    "./advanced.js": "./advanced.js",
     "./debug": "./debug.config.js"
   },
   "scripts": {
