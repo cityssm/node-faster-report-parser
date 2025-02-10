@@ -16,18 +16,18 @@ _This project is completely unofficial and is in no way affiliated with or endor
 
 | #               | Report Name                          | CSV | XLSX |
 | --------------- | ------------------------------------ | --- | ---- |
-| **Assets**      |                                      |     |
+| **Assets**      |                                      |     |      |
 | W114            | Asset Master List                    |     | ✔️   |
-| **Inventory**   |                                      |     |
+| **Inventory**   |                                      |     |      |
 | W200            | Inventory Report                     |     | ✔️   |
 | W200S           | Inventory Summary Report             | ✔️  |      |
 | W201            | Inventory Item Issue Report          |     | ✔️   |
 | W217            | Direct Charge Transactions           |     | ✔️   |
 | W223            | Inventory Transaction Details Report | ✔️  | ✔️   |
 | W235            | Inventory Snapshot                   | ✔️  |      |
-| **Maintenance** |                                      |     |
+| **Maintenance** |                                      |     |      |
 | W311            | Active Work Orders by Shop           |     | ✔️   |
-| **Setup**       |                                      |     |
+| **Setup**       |                                      |     |      |
 | W600            | Pick List Values Report              | ✔️  |      |
 | W603            | Message Logger                       | ✔️  |      |
 | W604            | Integration Log Viewer               |     | ✔️   |
