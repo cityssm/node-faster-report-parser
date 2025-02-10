@@ -14,19 +14,23 @@ _This project is completely unofficial and is in no way affiliated with or endor
 
 ## Supported "Standard" FASTER Web Reports
 
-| #     | Report Name                          | CSV | XLSX |
-| ----- | ------------------------------------ | --- | ---- |
-| W114  | Asset Master List                    |     | ✔️   |
-| W200  | Inventory Report                     |     | ✔️   |
-| W200S | Inventory Summary Report             | ✔️  |      |
-| W201  | Inventory Item Issue Report          |     | ✔️   |
-| W217  | Direct Charge Transactions           |     | ✔️   |
-| W223  | Inventory Transaction Details Report | ✔️  | ✔️   |
-| W235  | Inventory Snapshot                   | ✔️  |      |
-| W311  | Active Work Orders by Shop           |     | ✔️   |
-| W600  | Pick List Values Report              | ✔️  |      |
-| W603  | Message Logger                       | ✔️  |      |
-| W604  | Integration Log Viewer               |     | ✔️   |
+| #               | Report Name                          | CSV | XLSX |
+| --------------- | ------------------------------------ | --- | ---- |
+| **Assets**      |                                      |     |
+| W114            | Asset Master List                    |     | ✔️   |
+| **Inventory**   |                                      |     |
+| W200            | Inventory Report                     |     | ✔️   |
+| W200S           | Inventory Summary Report             | ✔️  |      |
+| W201            | Inventory Item Issue Report          |     | ✔️   |
+| W217            | Direct Charge Transactions           |     | ✔️   |
+| W223            | Inventory Transaction Details Report | ✔️  | ✔️   |
+| W235            | Inventory Snapshot                   | ✔️  |      |
+| **Maintenance** |                                      |     |
+| W311            | Active Work Orders by Shop           |     | ✔️   |
+| **Setup**       |                                      |     |
+| W600            | Pick List Values Report              | ✔️  |      |
+| W603            | Message Logger                       | ✔️  |      |
+| W604            | Integration Log Viewer               |     | ✔️   |
 
 ## Advanced Parsers
 
