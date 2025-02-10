@@ -1,7 +1,8 @@
+import { type DateString, type TimeString } from '@cityssm/utils-datetime';
 import type { W603ReportRow } from '../csvReports.js';
 interface InventoryImportError {
     messageId: number;
-    messageDateTime: string;
+    messageDateTime: `${DateString} ${TimeString}`;
     message: string;
     fileName?: string;
 }

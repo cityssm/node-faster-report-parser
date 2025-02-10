@@ -1,5 +1,10 @@
+import { dateToString, dateToTimeString } from '@cityssm/utils-datetime';
 const inventoryImportBlockStartMessagePrefix = 'Inventory Import process started';
 const inventoryImportBlockEndMessagePrefix = 'Inventory Import process completed';
+function formatDateTime(dateTimeString) {
+    const dateTime = new Date(dateTimeString);
+    return `${dateToString(dateTime)} ${dateToTimeString(dateTime)}`;
+}
 /**
  * Filters out the errors that occurred during the Inventory Import process from the W603 CSV report.
  *
@@ -40,7 +45,7 @@ export function extractInventoryImportErrors(messageLoggerData) {
             if (row.messageType === 'Error') {
                 errorData.push({
                     messageId: Number.parseInt(row.messageId),
-                    messageDateTime: row.messageDateTime,
+                    messageDateTime: formatDateTime(row.messageDateTime),
                     message: row.message
                 });
             }

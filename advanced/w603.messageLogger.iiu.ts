@@ -1,3 +1,10 @@
+import {
+  type DateString,
+  type TimeString,
+  dateToString,
+  dateToTimeString
+} from '@cityssm/utils-datetime'
+
 import type { W603ReportRow } from '../csvReports.js'
 
 const inventoryImportBlockStartMessagePrefix =
@@ -7,9 +14,14 @@ const inventoryImportBlockEndMessagePrefix =
 
 interface InventoryImportError {
   messageId: number
-  messageDateTime: string
+  messageDateTime: `${DateString} ${TimeString}`
   message: string
   fileName?: string
+}
+
+function formatDateTime(dateTimeString: string): `${DateString} ${TimeString}` {
+  const dateTime = new Date(dateTimeString)
+  return `${dateToString(dateTime)} ${dateToTimeString(dateTime)}` as `${DateString} ${TimeString}`
 }
 
 /**
@@ -62,7 +74,7 @@ export function extractInventoryImportErrors(
       if (row.messageType === 'Error') {
         errorData.push({
           messageId: Number.parseInt(row.messageId),
-          messageDateTime: row.messageDateTime,
+          messageDateTime: formatDateTime(row.messageDateTime),
           message: row.message
         })
       } else if (
