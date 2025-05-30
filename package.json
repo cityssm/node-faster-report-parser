@@ -1,31 +1,7 @@
 {
   "name": "@cityssm/faster-report-parser",
   "version": "0.6.0",
-  "type": "module",
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "description": "Parses select Excel and CSV reports from the FASTER Web Fleet Management System into usable data objects.",
-  "exports": {
-    ".": "./index.js",
-    "./index": "./index.js",
-    "./index.js": "./index.js",
-    "./csv": "./csvReports.js",
-    "./csvReports": "./csvReports.js",
-    "./csvReports.js": "./csvReports.js",
-    "./xlsx": "./xlsxReports.js",
-    "./xlsxReports": "./xlsxReports.js",
-    "./xlsxReports.js": "./xlsxReports.js",
-    "./advanced": "./advanced.js",
-    "./advanced.js": "./advanced.js",
-    "./debug": "./debug.config.js"
-  },
-  "scripts": {
-    "test": "node --test",
-    "test:csv": "node --test --test-name-pattern=\"node-faster-report-parser/csv\"",
-    "test:xlsx": "node --test --test-name-pattern=\"node-faster-report-parser/xlsx\"",
-    "coverage": "c8 --reporter=lcov --reporter=text --reporter=text-summary node --test"
-  },
   "keywords": [
     "faster-web",
     "fmis",
@@ -34,22 +10,36 @@
     "csv-parser",
     "xlsx-parser"
   ],
+  "homepage": "https://github.com/cityssm/node-faster-report-parser#readme",
+  "bugs": {
+    "url": "https://github.com/cityssm/node-faster-report-parser/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cityssm/node-faster-report-parser.git"
   },
-  "author": "The Corporation of the City of Sault Ste. Marie",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/cityssm/node-faster-report-parser/issues"
+  "author": "The Corporation of the City of Sault Ste. Marie",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./advanced": "./advanced.js",
+    "./advanced.js": "./advanced.js",
+    "./csv": "./csvReports.js",
+    "./csvReports": "./csvReports.js",
+    "./csvReports.js": "./csvReports.js",
+    "./debug": "./debug.config.js",
+    "./index": "./index.js",
+    "./index.js": "./index.js",
+    "./xlsx": "./xlsxReports.js",
+    "./xlsxReports": "./xlsxReports.js",
+    "./xlsxReports.js": "./xlsxReports.js"
   },
-  "homepage": "https://github.com/cityssm/node-faster-report-parser#readme",
-  "devDependencies": {
-    "@types/debug": "^4.1.12",
-    "@types/node": "^22.15.28",
-    "@types/papaparse": "^5.3.16",
-    "eslint-config-cityssm": "^24.0.0",
-    "prettier-config-cityssm": "^1.0.0"
+  "scripts": {
+    "coverage": "c8 --reporter=lcov --reporter=text --reporter=text-summary node --test",
+    "test": "node --test",
+    "test:csv": "node --test --test-name-pattern=\"node-faster-report-parser/csv\"",
+    "test:xlsx": "node --test --test-name-pattern=\"node-faster-report-parser/xlsx\""
   },
   "dependencies": {
     "@cityssm/string-to-numeric": "^1.0.0",
@@ -57,5 +47,15 @@
     "debug": "^4.4.1",
     "papaparse": "^5.5.3",
     "xlsx": "https://github.com/cityssm/node-dependencies/raw/main/xlsx/xlsx-0.20.2.tgz"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.12",
+    "@types/node": "^22.15.28",
+    "@types/papaparse": "^5.3.16",
+    "eslint-config-cityssm": "^24.0.0",
+    "prettier-config-cityssm": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
