@@ -9,7 +9,7 @@ import { parseW114ExcelReport, parseW200ExcelReport, parseW201ExcelReport, parse
 Debug.enable(DEBUG_ENABLE_NAMESPACES);
 await describe('node-faster-report-parser/xlsx', async () => {
     await it('Parses "W114 - Asset Master List"', () => {
-        const results = parseW114ExcelReport('./samples/w114_assetMasterList.xlsx');
+        const results = parseW114ExcelReport('./samples/w114_assetMasterList_20240603.xlsx');
         console.log(results);
         assert.strictEqual(results.reportName, w114ReportName);
         assert(isValidDateString(results.exportDate));

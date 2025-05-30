@@ -19,6 +19,7 @@ export interface W114AssetReportData {
     acquireDate?: DateString;
     status: string;
     grossVehicleWeight?: number;
+    usageCode: string;
 }
 export declare const w114ReportName = "W114 - Asset Master List";
 export interface W114ExcelReportResults extends FasterExcelReportResults {
@@ -27,6 +28,7 @@ export interface W114ExcelReportResults extends FasterExcelReportResults {
 }
 /**
  * Parses the XLSX version of the "W114 - Asset Master List".
+ * Tested with version "20240603".
  * @param pathToXlsxFile - Path to the report.
  * @returns - The parsed results.
  */

@@ -31,6 +31,7 @@ export interface W114AssetReportData {
   acquireDate?: DateString
   status: string
   grossVehicleWeight?: number
+  usageCode: string
 }
 
 export const w114ReportName = 'W114 - Asset Master List'
@@ -41,14 +42,16 @@ export interface W114ExcelReportResults extends FasterExcelReportResults {
 }
 
 function isDataRow(row: XlsxDataRow): boolean {
-  return row.length === 19 && Number.isFinite(Number.parseFloat(row[2] ?? ''))
+  return row.length === 21 && Number.isFinite(Number.parseFloat(row[2] ?? ''))
 }
 
 /**
  * Parses the XLSX version of the "W114 - Asset Master List".
+ * Tested with version "20240603".
  * @param pathToXlsxFile - Path to the report.
  * @returns - The parsed results.
  */
+// eslint-disable-next-line complexity
 export function parseW114ExcelReport(
   pathToXlsxFile: string
 ): W114ExcelReportResults {
@@ -122,10 +125,11 @@ export function parseW114ExcelReport(
         meterReadings,
         acquireDate:
           (row[15] ?? '') === '' ? undefined : dateToString(acquireDate),
-        status: row[16] ?? ''
+        status: row[16] ?? '',
+        usageCode: row[20]?.trim() ?? ''
       }
 
-      const grossVehicleWeight = Number.parseInt(row[18] ?? '')
+      const grossVehicleWeight = Number.parseInt(row[17] ?? '')
 
       if (Number.isFinite(grossVehicleWeight)) {
         asset.grossVehicleWeight = grossVehicleWeight

@@ -5,13 +5,15 @@ import { extractReportMetadata, getXLSXWorkBook, getXLSXWorkSheetData } from '..
 const debug = Debug(`${DEBUG_NAMESPACE}:xlsx:w114`);
 export const w114ReportName = 'W114 - Asset Master List';
 function isDataRow(row) {
-    return row.length === 19 && Number.isFinite(Number.parseFloat(row[2] ?? ''));
+    return row.length === 21 && Number.isFinite(Number.parseFloat(row[2] ?? ''));
 }
 /**
  * Parses the XLSX version of the "W114 - Asset Master List".
+ * Tested with version "20240603".
  * @param pathToXlsxFile - Path to the report.
  * @returns - The parsed results.
  */
+// eslint-disable-next-line complexity
 export function parseW114ExcelReport(pathToXlsxFile) {
     const workbook = getXLSXWorkBook(pathToXlsxFile);
     /*
@@ -67,9 +69,10 @@ export function parseW114ExcelReport(pathToXlsxFile) {
                 class: row[12] ?? '',
                 meterReadings,
                 acquireDate: (row[15] ?? '') === '' ? undefined : dateToString(acquireDate),
-                status: row[16] ?? ''
+                status: row[16] ?? '',
+                usageCode: row[20]?.trim() ?? ''
             };
-            const grossVehicleWeight = Number.parseInt(row[18] ?? '');
+            const grossVehicleWeight = Number.parseInt(row[17] ?? '');
             if (Number.isFinite(grossVehicleWeight)) {
                 asset.grossVehicleWeight = grossVehicleWeight;
             }
