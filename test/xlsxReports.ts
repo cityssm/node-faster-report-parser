@@ -42,9 +42,18 @@ await describe('node-faster-report-parser/xlsx', async () => {
     console.log(results.data[0])
     // console.log(results.data[0].storeroomDescription)
 
+    let hasGrossVehicleWeight = false
+
     for (const asset of results.data) {
       assert.notStrictEqual(asset.assetNumber, '')
+
+      if (asset.grossVehicleWeight !== undefined) {
+        assert(Number.isFinite(asset.grossVehicleWeight))
+        hasGrossVehicleWeight = true
+      }
     }
+
+    assert.ok(hasGrossVehicleWeight, 'At least one asset has a gross vehicle weight')
   })
 
   await it('Parses "W200 - Inventory Report"', () => {
