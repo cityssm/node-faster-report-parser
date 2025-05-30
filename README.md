@@ -17,7 +17,7 @@ _This project is completely unofficial and is in no way affiliated with or endor
 | #               | Report Name                          | CSV | XLSX |
 | --------------- | ------------------------------------ | --- | ---- |
 | **Assets**      |                                      |     |      |
-| W114            | Asset Master List                    |     | ✔️   |
+| W114            | Asset Master List (20240603.1500)    |     | ✔️   |
 | **Inventory**   |                                      |     |      |
 | W200            | Inventory Report                     |     | ✔️   |
 | W200S           | Inventory Summary Report             | ✔️  |      |
