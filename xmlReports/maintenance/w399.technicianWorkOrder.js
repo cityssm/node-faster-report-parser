@@ -17,7 +17,7 @@ export async function parseW399TechnicianWorkOrder(pathToXmlFile) {
         workOrderNumber: Number.parseInt(xml.Report.table1.textbox178.replace('WO# ', ''), 10),
         workOrderStatus: xml.Report.table1.textbox204,
         dateTimeIn: new Date(xml.Report.table1.textbox179.replace('Date/Time In: ', '')),
-        dateTimeOut: xml.Report.table1.txtOutDate === ''
+        dateTimeOut: xml.Report.table1.txtOutDate.trim() === ''
             ? undefined
             : new Date(xml.Report.table1.txtOutDate.replace('Date/Time Out: ', '')),
         asset: {

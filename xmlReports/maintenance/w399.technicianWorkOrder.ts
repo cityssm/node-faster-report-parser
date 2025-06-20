@@ -19,7 +19,7 @@ interface ParsedXml {
       textbox178: `WO# ${number}`
 
       textbox179: `Date/Time In: ${string}`
-      txtOutDate: '' | `Date/Time Out: ${string}`
+      txtOutDate: ' ' | `Date/Time Out: ${string}`
 
       /** Work Order Status */
       textbox204: string
@@ -223,7 +223,7 @@ export async function parseW399TechnicianWorkOrder(
       xml.Report.table1.textbox179.replace('Date/Time In: ', '')
     ),
     dateTimeOut:
-      xml.Report.table1.txtOutDate === ''
+      xml.Report.table1.txtOutDate.trim() === ''
         ? undefined
         : new Date(xml.Report.table1.txtOutDate.replace('Date/Time Out: ', '')),
 

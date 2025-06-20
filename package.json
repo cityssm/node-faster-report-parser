@@ -1,6 +1,6 @@
 {
   "name": "@cityssm/faster-report-parser",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Parses select Excel and CSV reports from the FASTER Web Fleet Management System into usable data objects.",
   "keywords": [
     "faster-web",
