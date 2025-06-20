@@ -6,7 +6,7 @@ export const config = tseslint.config(...cityssmConfig, {
             'warn',
             {
                 cspell: {
-                    words: [...cspellWords, 'master']
+                    words: [...cspellWords, 'master', 'subreport']
                 }
             }
         ],

@@ -1,5 +1,5 @@
 // eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
-/* eslint-disable no-secrets/no-secrets */
+/* eslint-disable no-console, no-secrets/no-secrets */
 
 import assert from 'node:assert'
 import { describe, it } from 'node:test'
@@ -34,10 +34,10 @@ await describe('node-faster-report-parser/xlsx', async () => {
     console.log(results)
 
     assert.strictEqual(results.reportName, w114ReportName)
-    assert(isValidDateString(results.exportDate))
-    assert(isValidTimeString(results.exportTime))
+    assert.ok(isValidDateString(results.exportDate))
+    assert.ok(isValidTimeString(results.exportTime))
 
-    assert(results.data.length > 0)
+    assert.ok(results.data.length > 0)
 
     console.log(results.data[0])
     // console.log(results.data[0].storeroomDescription)
@@ -48,7 +48,7 @@ await describe('node-faster-report-parser/xlsx', async () => {
       assert.notStrictEqual(asset.assetNumber, '')
 
       if (asset.grossVehicleWeight !== undefined) {
-        assert(Number.isFinite(asset.grossVehicleWeight))
+        assert.ok(Number.isFinite(asset.grossVehicleWeight))
         hasGrossVehicleWeight = true
       }
     }
@@ -62,10 +62,10 @@ await describe('node-faster-report-parser/xlsx', async () => {
     console.log(results)
 
     assert.strictEqual(results.reportName, w200ReportName)
-    assert(isValidDateString(results.exportDate))
-    assert(isValidTimeString(results.exportTime))
+    assert.ok(isValidDateString(results.exportDate))
+    assert.ok(isValidTimeString(results.exportTime))
 
-    assert(results.data.length > 0)
+    assert.ok(results.data.length > 0)
 
     // console.log(results.data[0].storeroom)
     // console.log(results.data[0].storeroomDescription)
@@ -73,7 +73,7 @@ await describe('node-faster-report-parser/xlsx', async () => {
     for (const storeroom of results.data) {
       assert.notStrictEqual(storeroom.storeroom, '')
 
-      assert(storeroom.items.length > 0)
+      assert.ok(storeroom.items.length > 0)
 
       // console.log(storeroom.items[0])
 
@@ -90,10 +90,10 @@ await describe('node-faster-report-parser/xlsx', async () => {
     console.log(results)
 
     assert.strictEqual(results.reportName, w201ReportName)
-    assert(isValidDateString(results.exportDate))
-    assert(isValidTimeString(results.exportTime))
+    assert.ok(isValidDateString(results.exportDate))
+    assert.ok(isValidTimeString(results.exportTime))
 
-    assert(results.data.length > 0)
+    assert.ok(results.data.length > 0)
   })
 
   await it('Parses "W217 - Direct Charge Transactions"', () => {
@@ -104,10 +104,10 @@ await describe('node-faster-report-parser/xlsx', async () => {
     // console.log(results)
 
     assert.strictEqual(results.reportName, w217ReportName)
-    assert(isValidDateString(results.exportDate))
-    assert(isValidTimeString(results.exportTime))
+    assert.ok(isValidDateString(results.exportDate))
+    assert.ok(isValidTimeString(results.exportTime))
 
-    assert(results.data.length > 0)
+    assert.ok(results.data.length > 0)
 
     // console.log(results.data[0].documentNumber)
     // console.log(results.data[0].symptom)
@@ -115,7 +115,7 @@ await describe('node-faster-report-parser/xlsx', async () => {
     for (const directChargeDocument of results.data) {
       assert.notStrictEqual(directChargeDocument.documentNumber, '')
 
-      assert(directChargeDocument.transactions.length > 0)
+      assert.ok(directChargeDocument.transactions.length > 0)
 
       // console.log(directChargeDocument.transactions[0])
 
@@ -124,7 +124,7 @@ await describe('node-faster-report-parser/xlsx', async () => {
         assert.notStrictEqual(transaction.itemNumber, '')
         assert.notStrictEqual(transaction.itemName, '')
         assert.notStrictEqual(transaction.repairDescription, '')
-        assert(isValidDateString(transaction.transactionDate))
+        assert.ok(isValidDateString(transaction.transactionDate))
       }
     }
   })
@@ -141,15 +141,15 @@ await describe('node-faster-report-parser/xlsx', async () => {
       // console.log(results)
 
       assert.strictEqual(results.reportName, w223ReportName)
-      assert(isValidDateString(results.exportDate))
-      assert(isValidTimeString(results.exportTime))
+      assert.ok(isValidDateString(results.exportDate))
+      assert.ok(isValidTimeString(results.exportTime))
 
-      assert(results.data.length > 0)
+      assert.ok(results.data.length > 0)
 
       for (const storeroom of results.data) {
         assert.notStrictEqual(storeroom.storeroom, '')
 
-        assert(storeroom.transactions.length > 0)
+        assert.ok(storeroom.transactions.length > 0)
 
         // console.log(storeroom.transactions[0])
 
@@ -162,7 +162,7 @@ await describe('node-faster-report-parser/xlsx', async () => {
             transaction.transactionType === 'WO ISSUE'
           ) {
             // inverseAmounts = true
-            assert(transaction.quantity >= 0)
+            assert.ok(transaction.quantity >= 0)
           }
 
           assert.strictEqual(
@@ -176,8 +176,8 @@ await describe('node-faster-report-parser/xlsx', async () => {
             transaction.transactionType === 'RETURN TO INV' ||
             transaction.transactionType === 'RETURN BIN'
           ) {
-            assert(transaction.documentNumber !== undefined)
-            assert(!Number.isNaN(transaction.documentNumber))
+            assert.ok(transaction.documentNumber !== undefined)
+            assert.ok(!Number.isNaN(transaction.documentNumber))
           }
         }
       }
@@ -191,17 +191,17 @@ await describe('node-faster-report-parser/xlsx', async () => {
       // console.log(results)
 
       assert.strictEqual(results.reportName, w223ReportName)
-      assert(isValidDateString(results.exportDate))
-      assert(isValidTimeString(results.exportTime))
+      assert.ok(isValidDateString(results.exportDate))
+      assert.ok(isValidTimeString(results.exportTime))
 
-      assert(results.data.length > 0)
+      assert.ok(results.data.length > 0)
 
       // console.log(results.data[0])
 
       for (const storeroom of results.data) {
         assert.notStrictEqual(storeroom.storeroom, '')
 
-        assert(storeroom.transactions.length > 0)
+        assert.ok(storeroom.transactions.length > 0)
 
         console.log(storeroom.transactions[0])
 
@@ -214,7 +214,7 @@ await describe('node-faster-report-parser/xlsx', async () => {
             transaction.transactionType === 'WO ISSUE'
           ) {
             // inverseAmounts = false
-            assert(transaction.quantity <= 0)
+            assert.ok(transaction.quantity <= 0)
           }
 
           assert.strictEqual(
@@ -228,8 +228,8 @@ await describe('node-faster-report-parser/xlsx', async () => {
             transaction.transactionType === 'RETURN TO INV' ||
             transaction.transactionType === 'RETURN BIN'
           ) {
-            assert(transaction.documentNumber !== undefined)
-            assert(!Number.isNaN(transaction.documentNumber))
+            assert.ok(transaction.documentNumber !== undefined)
+            assert.ok(!Number.isNaN(transaction.documentNumber))
           }
         }
       }
@@ -244,12 +244,12 @@ await describe('node-faster-report-parser/xlsx', async () => {
     // console.log(JSON.stringify(results, undefined, 2))
 
     assert.strictEqual(results.reportName, w311ReportName)
-    assert(isValidDateString(results.exportDate))
-    assert(isValidTimeString(results.exportTime))
+    assert.ok(isValidDateString(results.exportDate))
+    assert.ok(isValidTimeString(results.exportTime))
 
-    assert(results.data.length > 0)
-    assert((results.data.at(0)?.workOrders.length ?? 0) > 0)
-    assert((results.data.at(0)?.workOrders.at(0)?.repairs.length ?? 0) > 0)
+    assert.ok(results.data.length > 0)
+    assert.ok((results.data.at(0)?.workOrders.length ?? 0) > 0)
+    assert.ok((results.data.at(0)?.workOrders.at(0)?.repairs.length ?? 0) > 0)
   })
 
   await it('Parses "W604 - Integration Log Viewer"', () => {
@@ -260,9 +260,9 @@ await describe('node-faster-report-parser/xlsx', async () => {
     // console.log(JSON.stringify(results, undefined, 2))
 
     assert.strictEqual(results.reportName, w604ReportName)
-    assert(isValidDateString(results.exportDate))
-    assert(isValidTimeString(results.exportTime))
+    assert.ok(isValidDateString(results.exportDate))
+    assert.ok(isValidTimeString(results.exportTime))
 
-    assert(results.data.length > 0)
+    assert.ok(results.data.length > 0)
   })
 })

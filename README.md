@@ -2,7 +2,6 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/%40cityssm/faster-report-parser)](https://www.npmjs.com/package/@cityssm/faster-report-parser)
 [![DeepSource](https://app.deepsource.com/gh/cityssm/node-faster-report-parser.svg/?label=active+issues&show_trend=true&token=rD0jxkWVmFU_1JBnPdo6HdKI)](https://app.deepsource.com/gh/cityssm/node-faster-report-parser/)
-[![Maintainability](https://api.codeclimate.com/v1/badges/6e4f094e9e2473b3463b/maintainability)](https://codeclimate.com/github/cityssm/node-faster-report-parser/maintainability)
 
 **Parses select Excel (XLSX) and CSV reports from the
 [FASTER Web](https://fasterasset.com/products/fleet-management-software/) Fleet Management System
@@ -14,23 +13,24 @@ _This project is completely unofficial and is in no way affiliated with or endor
 
 ## Supported "Standard" FASTER Web Reports
 
-| #               | Report Name                          | CSV | XLSX |
-| --------------- | ------------------------------------ | --- | ---- |
-| **Assets**      |                                      |     |      |
-| W114            | Asset Master List (20240603.1500)    |     | ✔️   |
-| **Inventory**   |                                      |     |      |
-| W200            | Inventory Report                     |     | ✔️   |
-| W200S           | Inventory Summary Report             | ✔️  |      |
-| W201            | Inventory Item Issue Report          |     | ✔️   |
-| W217            | Direct Charge Transactions           |     | ✔️   |
-| W223            | Inventory Transaction Details Report | ✔️  | ✔️   |
-| W235            | Inventory Snapshot                   | ✔️  |      |
-| **Maintenance** |                                      |     |      |
-| W311            | Active Work Orders by Shop           |     | ✔️   |
-| **Setup**       |                                      |     |      |
-| W600            | Pick List Values Report              | ✔️  |      |
-| W603            | Message Logger                       | ✔️  |      |
-| W604            | Integration Log Viewer               |     | ✔️   |
+| #               | Report Name                          | CSV | XLSX | XML |
+| --------------- | ------------------------------------ | --- | ---- | --- |
+| **Assets**      |                                      |     |      |     |
+| W114            | Asset Master List (20240603.1500)    |     | ✔️   |     |
+| **Inventory**   |                                      |     |      |     |
+| W200            | Inventory Report                     |     | ✔️   |     |
+| W200S           | Inventory Summary Report             | ✔️  |      |     |
+| W201            | Inventory Item Issue Report          |     | ✔️   |     |
+| W217            | Direct Charge Transactions           |     | ✔️   |     |
+| W223            | Inventory Transaction Details Report | ✔️  | ✔️   |     |
+| W235            | Inventory Snapshot                   | ✔️  |      |     |
+| **Maintenance** |                                      |     |      |     |
+| W311            | Active Work Orders by Shop           |     | ✔️   |     |
+| W399            | Technician Work Order                |     |      | ✔️  |
+| **Setup**       |                                      |     |      |     |
+| W600            | Pick List Values Report              | ✔️  |      |     |
+| W603            | Message Logger                       | ✔️  |      |     |
+| W604            | Integration Log Viewer               |     | ✔️   |     |
 
 ## Advanced Parsers
 
