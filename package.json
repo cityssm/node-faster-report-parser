@@ -47,6 +47,7 @@
     "xmlReports/*",
     "advanced.*",
     "csvReports.*",
+    "debug.config.*",
     "index.*",
     "reportTypes.*",
     "xlsxReports.*",
