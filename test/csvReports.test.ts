@@ -1,4 +1,4 @@
-// eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
+/* eslint-disable node-test/no-async-describe */
 /* eslint-disable no-console */
 
 import assert from 'node:assert'
@@ -20,7 +20,7 @@ await describe('node-faster-report-parser/csv', async () => {
     )
 
     console.log(results.data[0])
-    assert(results.data.length > 0)
+    assert.ok(results.data.length > 0)
 
     console.log(results.parameters)
     console.log(results.version)
@@ -33,7 +33,7 @@ await describe('node-faster-report-parser/csv', async () => {
     )
 
     console.log(results.data[0])
-    assert(results.data.length > 0)
+    assert.ok(results.data.length > 0)
 
     console.log(results.parameters)
     console.log(results.version)
@@ -46,7 +46,7 @@ await describe('node-faster-report-parser/csv', async () => {
     )
 
     console.log(results.data[0])
-    assert(results.data.length > 0)
+    assert.ok(results.data.length > 0)
 
     console.log(results.parameters)
     console.log(results.version)
@@ -59,7 +59,7 @@ await describe('node-faster-report-parser/csv', async () => {
     )
 
     console.log(results.data[0])
-    assert(results.data.length > 0)
+    assert.ok(results.data.length > 0)
 
     console.log(results.parameters)
     console.log(results.version)
@@ -73,7 +73,7 @@ await describe('node-faster-report-parser/csv', async () => {
 
     console.log(results.data[0])
 
-    assert(results.data.length > 0)
+    assert.ok(results.data.length > 0)
 
     console.log(results.parameters)
     console.log(results.version)
@@ -82,6 +82,6 @@ await describe('node-faster-report-parser/csv', async () => {
 
     console.log(iiuErrors)
 
-    assert(iiuErrors.length > 0)
+    assert.ok(iiuErrors.length > 0)
   })
 })
