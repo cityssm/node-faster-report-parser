@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import { dateToString, dateToTimeString } from '@cityssm/utils-datetime';
-import * as XLSX from 'xlsx';
+import * as XLSX from '@e965/xlsx';
+// eslint-disable-next-line unicorn/no-top-level-side-effects
 XLSX.set_fs(fs);
 /**
  * Returns an XLSX WorkBook object

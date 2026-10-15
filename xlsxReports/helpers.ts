@@ -1,10 +1,11 @@
 import fs from 'node:fs'
 
 import { dateToString, dateToTimeString } from '@cityssm/utils-datetime'
-import * as XLSX from 'xlsx'
+import * as XLSX from '@e965/xlsx'
 
 import type { FasterExcelReportResults, XlsxDataRow } from './xlsxTypes.js'
 
+// eslint-disable-next-line unicorn/no-top-level-side-effects
 XLSX.set_fs(fs)
 
 /**
@@ -13,7 +14,7 @@ XLSX.set_fs(fs)
  * @returns XLSX WorkBook object
  */
 export function getXLSXWorkBook(pathToXlsxFile: string): XLSX.WorkBook {
-  return XLSX.readFile(pathToXlsxFile, { })
+  return XLSX.readFile(pathToXlsxFile, {})
 }
 
 /**
@@ -22,7 +23,10 @@ export function getXLSXWorkBook(pathToXlsxFile: string): XLSX.WorkBook {
  * @param formatAsStrings - Set to `true` when dates are included.
  * @returns - The sheet data as strings, array[row][column]
  */
-export function getXLSXWorkSheetData(workSheet: XLSX.WorkSheet, formatAsStrings = false): XlsxDataRow[] {
+export function getXLSXWorkSheetData(
+  workSheet: XLSX.WorkSheet,
+  formatAsStrings = false
+): XlsxDataRow[] {
   return XLSX.utils.sheet_to_json(workSheet, {
     header: 1,
     raw: !formatAsStrings
@@ -66,10 +70,14 @@ function parseParameterField(row: XlsxDataRow): {
 }
 
 interface ExtractReportMetadataOptions {
-  /** The first row is 1. */
+  /**
+   * The first row is 1.
+   */
   reportNameRowNumber: number
 
-  /** The first row is 1. */
+  /**
+   * The first row is 1.
+   */
   exportDateTimeRowNumber: number
 }
 

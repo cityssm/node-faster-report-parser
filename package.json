@@ -48,21 +48,21 @@
   },
   "dependencies": {
     "@cityssm/string-to-numeric": "^1.0.0",
-    "@cityssm/utils-datetime": "^1.3.0",
-    "debug": "^4.4.1",
-    "papaparse": "^5.5.3",
-    "xlsx": "https://github.com/cityssm/node-dependencies/raw/main/xlsx/xlsx-0.20.2.tgz",
+    "@cityssm/utils-datetime": "^1.4.1",
+    "@e965/xlsx": "^0.20.3",
+    "debug": "^4.4.3",
+    "papaparse": "^5.7.0",
     "xml2js": "^0.6.2"
   },
   "devDependencies": {
-    "@types/debug": "^4.1.12",
-    "@types/node": "^24.3.0",
-    "@types/papaparse": "^5.3.16",
+    "@types/debug": "^4.1.13",
+    "@types/node": "^26.6.5",
+    "@types/papaparse": "^5.5.2",
     "@types/xml2js": "^0.4.14",
-    "eslint-config-cityssm": "^27.1.0",
-    "prettier-config-cityssm": "^1.0.0"
+    "eslint-config-cityssm": "^58.0.0",
+    "prettier-config-cityssm": "^2.2.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   }
 }

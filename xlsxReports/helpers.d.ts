@@ -1,4 +1,4 @@
-import * as XLSX from 'xlsx';
+import * as XLSX from '@e965/xlsx';
 import type { FasterExcelReportResults, XlsxDataRow } from './xlsxTypes.js';
 /**
  * Returns an XLSX WorkBook object
@@ -14,9 +14,13 @@ export declare function getXLSXWorkBook(pathToXlsxFile: string): XLSX.WorkBook;
  */
 export declare function getXLSXWorkSheetData(workSheet: XLSX.WorkSheet, formatAsStrings?: boolean): XlsxDataRow[];
 interface ExtractReportMetadataOptions {
-    /** The first row is 1. */
+    /**
+     * The first row is 1.
+     */
     reportNameRowNumber: number;
-    /** The first row is 1. */
+    /**
+     * The first row is 1.
+     */
     exportDateTimeRowNumber: number;
 }
 /**
