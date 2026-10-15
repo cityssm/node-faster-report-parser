@@ -21,6 +21,7 @@
   },
   "license": "MIT",
   "author": "The Corporation of the City of Sault Ste. Marie",
+  "sideEffects": false,
   "type": "module",
   "exports": {
     ".": "./index.js",
@@ -39,6 +40,18 @@
     "./xmlReports": "./xmlReports.js",
     "./xmlReports.js": "./xmlReports.js"
   },
+  "files": [
+    "advanced/*",
+    "csvReports/*",
+    "xlsxReports/*",
+    "xmlReports/*",
+    "advanced.*",
+    "csvReports.*",
+    "index.*",
+    "reportTypes.*",
+    "xlsxReports.*",
+    "xmlReports.*"
+  ],
   "scripts": {
     "coverage": "c8 --reporter=lcov --reporter=text --reporter=text-summary node --test",
     "test": "node --test",

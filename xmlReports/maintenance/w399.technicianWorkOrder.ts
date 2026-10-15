@@ -96,6 +96,7 @@ interface ParsedXml {
               }
             }
           }
+
           table1: {
             textbox178: `WO# ${number}`
 
@@ -210,6 +211,7 @@ export interface W399TechnicianWorkOrderXmlResults {
   reportName: typeof w399ReportName
   workOrderNumber: number
   workOrderStatus: string
+  
   dateTimeIn: Date
   dateTimeOut?: Date
 
@@ -239,6 +241,7 @@ export interface W399TechnicianWorkOrderXmlResults {
     noteDate: Date
     noteSubject: string
     noteText: string
+
     noteAuthor: string
   }>
 }
@@ -264,31 +267,56 @@ export async function parseW399TechnicianWorkOrder(
 
   const workOrder: Partial<W399TechnicianWorkOrderXmlResults> = {
     reportName: w399ReportName,
-    workOrderNumber: Number.parseInt(
-      xml.Report.Tablix4.Details_Collection.Details.table1.textbox178.replace('WO# ', ''),
-      10
+    workOrderNumber: Math.trunc(
+      Number(
+        xml.Report.Tablix4.Details_Collection.Details.table1.textbox178.replace(
+          'WO# ',
+          ''
+        )
+      )
     ),
-    workOrderStatus: xml.Report.Tablix4.Details_Collection.Details.table1.textbox204,
+    workOrderStatus:
+      xml.Report.Tablix4.Details_Collection.Details.table1.textbox204,
 
     dateTimeIn: new Date(
-      xml.Report.Tablix4.Details_Collection.Details.table1.textbox179.replace('Date/Time In: ', '')
+      xml.Report.Tablix4.Details_Collection.Details.table1.textbox179.replace(
+        'Date/Time In: ',
+        ''
+      )
     ),
     dateTimeOut:
-      xml.Report.Tablix4.Details_Collection.Details.table1.txtOutDate.trim() === ''
+      xml.Report.Tablix4.Details_Collection.Details.table1.txtOutDate.trim() ===
+      ''
         ? undefined
-        : new Date(xml.Report.Tablix4.Details_Collection.Details.table1.txtOutDate.replace('Date/Time Out: ', '')),
+        : new Date(
+            xml.Report.Tablix4.Details_Collection.Details.table1.txtOutDate.replace(
+              'Date/Time Out: ',
+              ''
+            )
+          ),
 
     asset: {
-      assetNumber: xml.Report.Tablix4.Details_Collection.Details.table4.textbox48.replace('ASSET NUMBER: ', ''),
-      license: xml.Report.Tablix4.Details_Collection.Details.table4.textbox49.replace('LICENSE: ', ''),
+      assetNumber:
+        xml.Report.Tablix4.Details_Collection.Details.table4.textbox48.replace(
+          'ASSET NUMBER: ',
+          ''
+        ),
+      license:
+        xml.Report.Tablix4.Details_Collection.Details.table4.textbox49.replace(
+          'LICENSE: ',
+          ''
+        ),
 
       class: xml.Report.Tablix4.Details_Collection.Details.table4.textbox7,
       color: xml.Report.Tablix4.Details_Collection.Details.table4.textbox57,
-      vinSerialNumber: xml.Report.Tablix4.Details_Collection.Details.table4.textbox61,
+      vinSerialNumber:
+        xml.Report.Tablix4.Details_Collection.Details.table4.textbox61,
 
       make: xml.Report.Tablix4.Details_Collection.Details.table4.textbox63,
       model: xml.Report.Tablix4.Details_Collection.Details.table4.textbox66,
-      year: Number.parseInt(xml.Report.Tablix4.Details_Collection.Details.table4.textbox59, 10)
+      year: Math.trunc(
+        Number(xml.Report.Tablix4.Details_Collection.Details.table4.textbox59)
+      )
     }
   }
 
@@ -297,7 +325,8 @@ export async function parseW399TechnicianWorkOrder(
    */
 
   const repairDetails = normalizeDetailCollection(
-    xml.Report.Tablix4.Details_Collection.Details.table2.subreport7.Report.table4
+    xml.Report.Tablix4.Details_Collection.Details.table2.subreport7.Report
+      .table4
   )
 
   workOrder.repairs = repairDetails.map((detail) => ({
@@ -313,7 +342,8 @@ export async function parseW399TechnicianWorkOrder(
    */
 
   const noteDetails = normalizeDetailCollection(
-    xml.Report.Tablix4.Details_Collection.Details.table2.subreport8.Report.table4
+    xml.Report.Tablix4.Details_Collection.Details.table2.subreport8.Report
+      .table4
   )
 
   workOrder.notes = noteDetails.map((detail) => ({

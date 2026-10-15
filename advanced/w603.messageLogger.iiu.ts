@@ -44,8 +44,14 @@ export function extractInventoryImportErrors(
    */
 
   messageLoggerData.sort((a, b) => {
-    const messageIdA = Number.parseInt(a.messageId === '' ? '0' : a.messageId)
-    const messageIdB = Number.parseInt(b.messageId === '' ? '0' : b.messageId)
+    const messageIdA = Math.trunc(
+      Number(a.messageId === '' ? '0' : a.messageId)
+    )
+
+    const messageIdB = Math.trunc(
+      Number(b.messageId === '' ? '0' : b.messageId)
+    )
+
     return messageIdA - messageIdB
   })
 
@@ -62,18 +68,23 @@ export function extractInventoryImportErrors(
       continue
     }
 
-    if (row.message.trim().startsWith(inventoryImportBlockStartMessagePrefix)) {
-      inventoryImportBlockStartMessageId = Number.parseInt(row.messageId)
+    if (
+      row.message.trimStart().startsWith(inventoryImportBlockStartMessagePrefix)
+    ) {
+      inventoryImportBlockStartMessageId = Math.trunc(Number(row.messageId))
     }
 
-    if (row.message.trim().startsWith(inventoryImportBlockEndMessagePrefix)) {
+    if (
+      row.message.trimStart().startsWith(inventoryImportBlockEndMessagePrefix)
+    ) {
       inventoryImportBlockStartMessageId = undefined
     }
 
     if (inventoryImportBlockStartMessageId !== undefined) {
       if (row.messageType === 'Error') {
         errorData.push({
-          messageId: Number.parseInt(row.messageId),
+          messageId: Math.trunc(Number(row.messageId)),
+
           messageDateTime: formatDateTime(row.messageDateTime),
           message: row.message
         })
@@ -86,13 +97,14 @@ export function extractInventoryImportErrors(
           .slice(0, Math.max(0, row.message.indexOf(' file ')))
           .trim()
 
-        for (let index = errorData.length - 1; index >= 0; index--) {
+        for (let index = errorData.length - 1; index >= 0; index -= 1) {
           if (
             errorData[index].fileName === undefined &&
             errorData[index].messageId > inventoryImportBlockStartMessageId
           ) {
             errorData[index].fileName = fileName
           } else {
+            // eslint-disable-next-line unicorn/no-break-in-nested-loop
             break
           }
         }

@@ -3,7 +3,10 @@
     "ignorePaths": [],
     "dictionaryDefinitions": [],
     "dictionaries": [],
-    "words": [],
+    "words": [
+        "cityssm",
+        "papaparse"
+    ],
     "ignoreWords": [],
     "import": []
 }

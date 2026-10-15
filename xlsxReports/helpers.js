@@ -14,13 +14,13 @@ export function getXLSXWorkBook(pathToXlsxFile) {
 /**
  * Parses an XLSX WorkSheet into usable data.
  * @param workSheet - An XLSX WorkSheet object.
- * @param formatAsStrings - Set to `true` when dates are included.
+ * @param shouldFormatAsStrings - Set to `true` when dates are included.
  * @returns - The sheet data as strings, array[row][column]
  */
-export function getXLSXWorkSheetData(workSheet, formatAsStrings = false) {
+export function getXLSXWorkSheetData(workSheet, shouldFormatAsStrings = false) {
     return XLSX.utils.sheet_to_json(workSheet, {
         header: 1,
-        raw: !formatAsStrings
+        raw: !shouldFormatAsStrings
     });
 }
 function trimRowToData(row) {
@@ -67,11 +67,12 @@ export function extractReportMetadata(workbook, options) {
     });
     let reportName = '';
     let exportDateTime = '';
-    for (const [columnNumber, columnValue] of lastSheetRows[options.reportNameRowNumber - 1].entries()) {
-        reportName = columnValue ?? '';
+    // eslint-disable-next-line unicorn/no-unreadable-for-of-expression
+    for (const [columnNumber, columnValue = ''] of lastSheetRows[options.reportNameRowNumber - 1].entries()) {
+        // eslint-disable-next-line sonarjs/no-redundant-assignments
+        reportName = columnValue;
         if (reportName !== '') {
             exportDateTime =
-                // eslint-disable-next-line security/detect-object-injection
                 lastSheetRows[options.exportDateTimeRowNumber - 1][columnNumber] ?? '';
             break;
         }

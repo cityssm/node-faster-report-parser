@@ -20,16 +20,16 @@ export function getXLSXWorkBook(pathToXlsxFile: string): XLSX.WorkBook {
 /**
  * Parses an XLSX WorkSheet into usable data.
  * @param workSheet - An XLSX WorkSheet object.
- * @param formatAsStrings - Set to `true` when dates are included.
+ * @param shouldFormatAsStrings - Set to `true` when dates are included.
  * @returns - The sheet data as strings, array[row][column]
  */
 export function getXLSXWorkSheetData(
   workSheet: XLSX.WorkSheet,
-  formatAsStrings = false
+  shouldFormatAsStrings = false
 ): XlsxDataRow[] {
   return XLSX.utils.sheet_to_json(workSheet, {
     header: 1,
-    raw: !formatAsStrings
+    raw: !shouldFormatAsStrings
   })
 }
 
@@ -101,15 +101,17 @@ export function extractReportMetadata(
   let reportName = ''
   let exportDateTime = ''
 
-  for (const [columnNumber, columnValue] of lastSheetRows[
+  // eslint-disable-next-line unicorn/no-unreadable-for-of-expression
+  for (const [columnNumber, columnValue = ''] of lastSheetRows[
     options.reportNameRowNumber - 1
   ].entries()) {
-    reportName = columnValue ?? ''
+    // eslint-disable-next-line sonarjs/no-redundant-assignments
+    reportName = columnValue
 
     if (reportName !== '') {
       exportDateTime =
-        // eslint-disable-next-line security/detect-object-injection
         lastSheetRows[options.exportDateTimeRowNumber - 1][columnNumber] ?? ''
+
       break
     }
   }
