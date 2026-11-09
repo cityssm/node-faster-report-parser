@@ -73,7 +73,7 @@
     "@types/node": "^26.6.5",
     "@types/papaparse": "^5.5.2",
     "@types/xml2js": "^0.4.14",
-    "eslint-config-cityssm": "^58.0.0",
+    "eslint-config-cityssm": "^59.0.1",
     "prettier-config-cityssm": "^2.2.0"
   },
   "engines": {
